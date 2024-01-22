@@ -1,0 +1,190 @@
+*{
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+}
+#root{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+header{
+  width: 100%;
+  margin-bottom: 1em;
+}
+nav{
+  background-color: #333;
+  display: flex;
+  justify-content: flex-end;
+  padding: .1em;
+}
+nav ul{
+  list-style: none;
+}
+nav form{
+  display: flex;
+  gap: 1px;
+}
+nav form input{
+  background-color: #878787;
+  border: none;
+  outline: none;
+
+}
+nav form button{
+  margin-right: 10px;
+}
+
+main{
+  width: 80%;
+  margin: auto;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border: 1px solid #202020;
+}
+
+
+section{
+  width: 50%;
+}
+
+
+table{
+  border-collapse: collapse;
+}
+
+table th, td{
+  padding: .5em;
+  border: 1px solid #222;
+}
+
+
+/* MODAL */
+
+.searchUserModal{
+  border: 1px solid #747474;
+  width: 100%;
+  margin: auto;
+  margin-top: 1em;
+  padding: 1em;
+  display: flex;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  transition: .35s all;
+  position: absolute;
+  z-index: 1;
+  background-color: #1b1b1b9a;
+
+}
+.userContent{
+  width: 80%;
+  background-color: #1a1a11;
+  height: 100%;
+  background-color: #f0f0f0
+}
+
+.userContent ul{
+list-style: none;
+width: 100%;
+padding: 0;
+
+}
+
+.userContent ul li{
+  display: flex;
+  justify-content: center;
+}
+
+.userModal{
+  width: 90%;
+  border: 1px solid #1a1a11;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+ 
+}
+.userContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userContent .userDates{
+  display: flex;
+  flex-direction: column;
+}
+
+.newUser{
+  width: 30%;
+  border: 1px solid #202020;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #878787;
+  align-content: center;
+  
+}
+
+.newUser form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 1em;
+  background-color: #f0f0f0;
+}
+
+
+.atenderUser{
+width: 100%;
+border: 1px solid violet;
+background-color: rgb(187, 208, 248);
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+display: flex;
+flex-direction: column;
+height: 100%;
+align-items: center;
+z-index: 1;
+}
+
+.atenderUser form{
+height: 100%;
+width: 60%;
+padding: 1em;
+border: 1px solid #b91f1f;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:1em;
+background-color: #fafafa;
+}
+
+.atenderUser form span{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.canal-recibo{
+  display: flex;
+  width: 50%;
+}
+.atenderUser .canal-recibo span{
+  flex-direction: row;
+}

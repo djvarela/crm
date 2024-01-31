@@ -1,19 +1,23 @@
-import "./App.css";
-import SearchProvider from "./Context/SearchProvider";
-import { NavBar } from "./components";
-import AppRouter from "./router/AppRouter";
 
-function App() {
+import "./assets/css/normalize.css";
+import "./App.css";
+import { NavBar, User } from "./components";
+import { AppRouter } from "./router";
+import { AuthProvider } from "./auth/context/AuthProvider";
+
+
+
+
+
+export function App() {
 
 
   return (
-    <SearchProvider>
-
-      <NavBar/>
-      <AppRouter/>
-    
-    </SearchProvider>
+    <AuthProvider>
+     
+        <AppRouter />
+     
+    </AuthProvider>
   );
 }
 
-export default App;

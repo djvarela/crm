@@ -1,20 +1,34 @@
 import { Route, Routes } from "react-router-dom";
-import { FormsNuevoCliente, Home, SearchCliente } from "../components";
+import { CrmRoutes } from "../routes/CrmRoutes";
+import { LoginPage } from "../pages";
+import { PublicRoutes } from "../routes/PublicRoutes";
+import { PrivateRoutes } from "../routes/PrivateRoutes";
 
-const AppRouter = () => {
+export const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="login/*"
+          element={
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/search" element={<SearchCliente />} />
-        <Route path="/alta-cliente" element={<FormsNuevoCliente />} />
+            <PublicRoutes>
+              <Routes>
+                <Route path="/*" element={<LoginPage />} />
+              </Routes>
+            </PublicRoutes>
 
+          }
+        />
 
+        <Route path="/*"
+          element={ 
+            <PrivateRoutes>
+              <CrmRoutes />
+            </PrivateRoutes>
+            
+          }
+        />
       </Routes>
     </>
   );
 };
-
-export default AppRouter;

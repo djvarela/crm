@@ -18,6 +18,9 @@ export const FormsNuevoCliente = () => {
       apellido: apellidoRef.current.value,
       telefono: telefonoRef.current.value,
       email: emailRef.current.value,
+      status: false,  
+      user : '',
+      date: new Date()
     };
 
     const localClients = JSON.parse(localStorage.getItem("clients")) || [];

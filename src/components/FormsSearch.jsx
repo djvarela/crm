@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 
 const FormsSearch = () => {
-  const {setSearch} = useContext(SearchContext)
+  // const {setSearch} = useContext(SearchContext)
   const navigation = useNavigate();
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
 
-   const text = e.target[0].value;
+  //  const text = e.target[0].value;
 
-   setSearch(text)
+  //  setSearch(text)
 
-   navigation(`./search?q=${text}`)
+  //  navigation(`./search?q=${text}`)
   };
   
   return (

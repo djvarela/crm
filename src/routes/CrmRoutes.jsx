@@ -1,34 +1,42 @@
-import React, { useContext } from 'react'
-import { FormsNuevoCliente, Home, NavBar, SearchCliente } from '../components'
-import { Route, Routes } from 'react-router-dom'
-import { AgregarUser } from '../pages'
-import { AuthContext } from '../auth/context/AuthContext'
+import { FormsNuevoCliente, Home, NavBar, SearchCliente } from "../components";
+import { Route, Routes } from "react-router-dom";
+import { AgregarUser } from "../pages";
+import { AuthContext } from "../auth/context/AuthContext";
+import React, { useContext } from "react";
+import Aside from "../components/Aside";
 
 export const CrmRoutes = () => {
 
-  const {user  }= useContext(AuthContext);
 
   return (
     <>
-    <header>
-        <h2>{user.name}</h2>
-        <NavBar/>
-    </header>
-    <main>
+      <section className="app-container">
+      <header>
+            <NavBar />
+      </header>
 
 
-        <Routes>
+        <section className="content">
+          
+          <Aside />
+          
+        
 
-          <Route path="/home" element={<Home />} />
-          <Route path="/usuarios/agregar" element={<AgregarUser />} />
-          <Route path="/search" element={<SearchCliente />} />
-          <Route path="/alta-cliente" element={<FormsNuevoCliente />} />
+          <section className="route-container">
 
-        </Routes>
-    </main>
+            <main>
+              <Routes>
+                <Route path="/home" element={<Home />} />
+                <Route path="/usuarios/agregar" element={<AgregarUser />} />
+                <Route path="/search" element={<SearchCliente />} />
+                <Route path="/alta-cliente" element={<FormsNuevoCliente />} />
+              </Routes>
+            </main>
 
-
+          </section>
+        </section>
+        
+      </section>
     </>
-  )
-}
-
+  );
+};

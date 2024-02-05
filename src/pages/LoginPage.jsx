@@ -1,22 +1,19 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/context/AuthContext";
+import "../assets/css/login.css";
 
 export const LoginPage = () => {
-  const {login }= useContext(AuthContext) 
-  console.log(login)
+  const { login } = useContext(AuthContext);
+  console.log(login);
   const navigation = useNavigate();
 
   function onLogin(e) {
-
-
-    
     e.preventDefault();
 
-     const email = e.target.email.value.toLowerCase().trim();
+    const email = e.target.email.value.toLowerCase().trim();
 
-     login(email);
-
+    login(email);
 
     // const localUser = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -35,25 +32,32 @@ export const LoginPage = () => {
     //   date: new Date(),
     // };
 
-    // localStorage.setItem("log", JSON.stringify(log)); 
+    // localStorage.setItem("log", JSON.stringify(log));
 
-
-   
     navigation("/home");
   }
 
   return (
     <>
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={onLogin}>
-        <label htmlFor="email ">Email:</label>
-        <input type="text" name="email" id="email" />
+      <section className="login-page">
 
-        <button>Ingresar</button>
-      </form>
-    </div>
+        <div className="login-container">
+          <div className="forms-container">
+            <h2>Login</h2>
+            <form onSubmit={onLogin}>
+              <span>
+                <label htmlFor="email ">Email:</label>
+                <input type="text" name="email" id="email" />
+
+                <label htmlFor="clave">Clave:</label>
+                <input type="text" name="clave" id="clave" />
+              </span>
+
+              <button>Ingresar</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
-

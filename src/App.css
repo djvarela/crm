@@ -8,28 +8,31 @@ html, body{
 #root{
   width: 100%;
   display: flex;
-  flex-direction: column;
+  height: 100%;
 
 }
-
+body{
+  background-color: #F4F8F7;
+}
 header{
   width: 100%;
-  margin-bottom: .4em;
   display: flex;
-  background-color: #333;
-  justify-content: space-between;
+  border: 1px solid #eee;
+  justify-content: flex-end;
   align-items: center;
   gap: 1em;
-  padding: .4em
+  padding: .4em;
+  background-color: #fff;
 }
 header h2{
   margin: 0;
-  color: #eee;
+
 }
 
 nav{
   display: flex;
   justify-content: flex-end;
+
 
 }
 nav ul{
@@ -44,7 +47,7 @@ nav ul{
 }
 
 nav ul a{
-  color: #eee;
+  color: #1a1a11;
   text-decoration: none;
 }
 
@@ -56,23 +59,84 @@ nav form input{
   background-color: #878787;
   border: none;
   outline: none;
-
 }
 nav form button{
   margin-right: 10px;
 }
 
+.app-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid #202020;
+}
+/*--- ASIDE ---*/
+
+
+aside{
+  border: 1px solid #eee;
+  background-color: #FFFFFF;
+  width: 15%;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+}
+aside ul{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+ 
+  
+}
+
+aside  li{
+  padding: 1em;
+  border: 1px solid #5f5e5e;
+}
+
+aside  li ul{
+  padding:.2rem;
+}
+
+aside li a{
+  font-size: .8rem;
+}
+
+
+/*--- --- ---*/
+
+
+.content{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em; 
+  height: 100%;
+}
+
+.route-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 main{
-  width: 80%;
-  margin: auto;
+  margin-top: 1em;
+  width: 90%;
+  margin-bottom: 1em;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   gap:1em;
-  border: 1px solid #202020;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 1px 1px 1em #5f5e5e;
+
 }
 
 

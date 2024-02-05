@@ -24,7 +24,7 @@ height: 100%;
 }
 .forms-container{
     width: 30%;
-    height: 50%;
+
     border-radius: 10px;
     backdrop-filter: blur(20px);
     display: flex;

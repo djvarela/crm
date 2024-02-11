@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { SearchContext } from "../Context/SearchContext";
+
 import { useNavigate } from "react-router-dom";
 
 

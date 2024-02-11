@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FormsSearch from "./FormsSearch";
+import { UserLogin } from "./user/UserLogin";
 
 
 export const NavBar = () => {
@@ -11,7 +12,9 @@ export const NavBar = () => {
            
         <li>
           <FormsSearch />
+      
         </li>
+        <li>  <UserLogin /></li>
        
       </ul>
     </nav>

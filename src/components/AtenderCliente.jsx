@@ -1,9 +1,8 @@
-import { useContext, useRef } from "react";
-import { SearchContext } from "../Context/SearchContext";
+import {  useRef } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 export const AtenderCliente = () => {
-  const { atender } = useContext(SearchContext);
   const navigation = useNavigate();
   const mensajeRef = useRef();
   const emailRef = useRef();

@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { SearchContext } from "../Context/SearchContext";
+
 import { getClientsFormSearch } from "../helpers";
 import { AtenderCliente } from "../components";
 
 export const SearchCliente = () => {
-  const { search,setAtender } = useContext(SearchContext);
+
   
   const results = getClientsFormSearch(search);
 

@@ -1,32 +1,45 @@
-export const AgregarUser = () => {
+export const AgregarUser = ({ setUsers, users }) => {
+  const Reader = new FileReader();
+
+  function onAvatar(e) {
+    const fileAvatar = document.getElementById("fileAvatar");
+    const avatar = document.getElementById("avatar");
+
+    Reader.onload = (e) => {
+      avatar.src = e.target.result;
+    };
+    Reader.readAsDataURL(fileAvatar.files[0]);
+  }
 
   function onSubmit(e) {
     e.preventDefault();
-   
+    const avatarImg = document.getElementById("avatar");
+    Reader.onload = (e) => {
+      fileAvatar.src = e.target.result;
+    };
+    const img = Reader.result;
 
-    const users = {
-      id: crypto.randomUUID,
+    const usersModel = {
+      id: self.crypto.randomUUID(),
       nombre: e.target.nombre.value,
       apellido: e.target.apellido.value,
       rol: e.target.rol.value,
       email: e.target.email.value,
+      avatar: img,
+      active: true,
+      password: 1234,
     };
 
-    const locationUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setUsers([...users, usersModel]);
 
-    locationUsers.push(users)
+    const locationUsers = JSON.parse(localStorage.getItem("users")) || [];
+    locationUsers.push(usersModel);
 
     localStorage.setItem("users", JSON.stringify(locationUsers));
 
+    avatarImg.src = "";
 
-
-
-
-    e.target.nombre.value=''
-    e.target.apellido.value='',
-    e.target.rol.value='',
-    e.target.email.value='';
-
+    e.target.reset();
 
     //TODO:  notificar que fue guardado el usuario
   }
@@ -36,7 +49,25 @@ export const AgregarUser = () => {
       <h2>Agregar Nuevo usuario</h2>
 
       <div className="form-Aad-User">
-        <form onSubmit={onSubmit} autoComplete="off">
+        <form
+          onSubmit={onSubmit}
+          encType="multipart/form-data"
+          autoComplete="off"
+        >
+          <span>
+            <img src="" width={"100px"} alt="" id="avatar" />
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              type="file"
+              name="avatar"
+              id="fileAvatar"
+              required
+              onChange={(e) => {
+                onAvatar(e);
+              }}
+            />
+          </span>
+
           <label htmlFor="nombe">Nombre</label>
           <input type="text" name="nombre" id="nombre" />
 

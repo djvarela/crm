@@ -1,8 +1,7 @@
 import { useContext, useRef } from "react";
-import { SearchContext } from "../Context/SearchContext";
+
 
 export const FormsNuevoCliente = () => {
-  const { newClient, setNewClient } = useContext(SearchContext);
 
   const nameRef = useRef();
   const apellidoRef = useRef();

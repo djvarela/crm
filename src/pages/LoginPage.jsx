@@ -12,28 +12,32 @@ export const LoginPage = () => {
   function onLogin(e) {
     e.preventDefault();
 
+    const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+
     const email = e.target.email.value.toLowerCase().trim();
 
-    login(email);
+   
 
-    // const localUser = JSON.parse(localStorage.getItem("users")) || [];
+    const userLog = localUsers.filter(
+      (user) => user.email.toLowerCase() === email
+    );
 
-    // const userLog = localUser.filter(
-    //   (user) => user.email.toLowerCase() === email
-    // );
+     if (userLog.length < 1) return {};
 
-    // if (userLog.length < 1) return {};
-
-    // const log = {
-    //   id_user: (userLog[0].id = ""),
-    //   nombre: userLog[0].nombre,
-    //   apellido: userLog[0].apellido,
-    //   rol: userLog[0].rol,
-    //   email: userLog[0].email,
-    //   date: new Date(),
-    // };
+     const log = {
+    id_user: (userLog[0].id =crypto.randomUUID()),
+     nombre: userLog[0].nombre,
+      apellido: userLog[0].apellido,
+      rol: userLog[0].rol,
+      email: userLog[0].email,
+      date: new Date(),
+      avatar: userLog[0].avatar
+    };
 
     // localStorage.setItem("log", JSON.stringify(log));
+
+
+    login(log);
 
     navigation("/home");
   }

@@ -16,17 +16,18 @@ const init = () => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {}, init);
 
-  function login(name ='') {
-    const user = { id: crypto.randomUUID(), name };
 
+function login(log ='') {
+    const user = log;
     const action = { type: types.login, payload: user, };
-
     localStorage.setItem("login", JSON.stringify(user));
 
     dispatch(action);
-  }
+}
 
-  function logout() {
+
+
+function logout() {
 
     localStorage.removeItem("login");
 
@@ -37,12 +38,16 @@ export const AuthProvider = ({ children }) => {
 
   }
 
+
+
+
   return (
     <AuthContext.Provider
       value={{
         ...state,
         login,
         logout,
+       
       }}
     >
       {children}

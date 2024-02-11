@@ -1,209 +1,226 @@
-*{
-  box-sizing: border-box;
+@font-face {
+  font-family: Dosis;
+  src: url("./assets/font/Dosis-font.woff2");
+  font-display: swap;
 }
-html, body{
+
+* {
+  box-sizing: border-box;
+  font-family: Dosis;
+}
+html,
+body {
   margin: 0;
   padding: 0;
 }
-#root{
+#root {
   width: 100%;
   display: flex;
-  height: 100%;
-
+  min-height: 100vh
 }
-body{
-  background-color: #F4F8F7;
+body {
+  background-color: #fafaff;
 }
-header{
+header {
   width: 100%;
   display: flex;
-  border: 1px solid #eee;
   justify-content: flex-end;
   align-items: center;
-  gap: 1em;
-  padding: .4em;
-  background-color: #fff;
+  background-color: #FCFDFF;
 }
-header h2{
+header h2 {
   margin: 0;
-
 }
 
-nav{
+nav {
   display: flex;
   justify-content: flex-end;
-
-
 }
-nav ul{
+nav ul {
   list-style: none;
   display: flex;
-  gap:1em;
+  gap: 1em;
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 10px;
+  margin: 5px;
 
 }
+nav ul li{
+  margin-right: 2em;
+}
 
-nav ul a{
+nav ul a {
   color: #1a1a11;
   text-decoration: none;
 }
 
-nav form{
+nav form {
   display: flex;
   gap: 1px;
 }
-nav form input{
-  background-color: #878787;
-  border: none;
+nav form input {
+  border: 1px solid #222;
+  
   outline: none;
 }
-nav form button{
+nav form button {
   margin-right: 10px;
 }
 
-.app-container{
+.app-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   border: 1px solid #202020;
+  background-color: #F5F7F9;
+  position: relative;
+  
 }
 /*--- ASIDE ---*/
 
-
-aside{
-  border: 1px solid #eee;
-  background-color: #FFFFFF;
+aside {
+  background-color: #fcfdff;
   width: 15%;
   display: flex;
   padding: 1em;
   flex-direction: column;
   justify-content: space-between;
 }
-aside ul{
+aside ul {
   display: flex;
   flex-direction: column;
   list-style: none;
   padding: 0;
- 
-  
+  gap: 1em;
 }
 
-aside  li{
-  padding: 1em;
-  border: 1px solid #5f5e5e;
+aside li ul {
+  padding: 0.2rem;
+  display: none;
 }
 
-aside  li ul{
-  padding:.2rem;
+aside li a {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 0.6rem;
+  color: #7b7b7b;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5em;
 }
 
-aside li a{
-  font-size: .8rem;
+aside li a:hover {
+  background-color: #0090e5;
+  color: #fff;
 }
-
+aside li a:hover aside li a img {
+  color: #eee;
+  fill: red;
+}
 
 /*--- --- ---*/
 
-
-.content{
+.content {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 1em; 
+  gap: 1em;
   height: 100%;
 }
 
-.route-container{
+.route-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-main{
+main {
+  width: 97%;
   margin-top: 1em;
-  width: 90%;
   margin-bottom: 1em;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap:1em;
-background-color: #fff;
-border-radius: 10px;
-box-shadow: 1px 1px 1em #5f5e5e;
+  gap: 1em;
+  background-color: #fff;
+  box-shadow: 1px 1px .4em #5f5e5e;
+ }
 
-}
-
-
-section{
+section {
   width: 50%;
 }
 
-
-table{
+table {
   border-collapse: collapse;
 }
 
-table th, td{
-  padding: .5em;
+table th,
+td {
+  padding: 0.5em;
   border: 1px solid #222;
 }
 
-
 /*--- HOME ---*/
-.home{
+.home {
   width: 100%;
   height: 100%;
   border: 1px solid #eee;
 }
 
-.home-status{
+.home-status {
   width: 100%;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
-
 }
-.home-status ul{
+.home-status ul {
   display: flex;
   gap: 1em;
   list-style: none;
+  width: 90%;
+  justify-content: center;
 }
 
-.home-status ul li{
-  border: 1px solid #b91f1f;
+.home-status ul li {
+  border: 1px solid #ab9e9e;
   padding: 1em;
-  
+  width: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1em;
+  font-weight: bolder;
+}
+.home-status ul li span{
+  font-size: 3rem;
+}
+
+.home-status ul .news-leads {
+background-color: #eaf8ee;
+color: #49bc59;
+
 }
 
 
 /* -- --- -- */
-
 
 /* -- USERS -- */
-.add-user form{
+.add-user form {
   display: flex;
   flex-direction: column;
-  gap:.5em;
-
+  gap: 0.5em;
 }
 
-
 /* -- --- -- */
-
-
-
-
 
 /* MODAL */
 
-.searchUserModal{
+.searchUserModal {
   border: 1px solid #747474;
   width: 100%;
   margin: auto;
@@ -212,51 +229,48 @@ table th, td{
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: .35s all;
+  transition: 0.35s all;
 
   z-index: 1;
   background-color: #1b1b1b9a;
-
 }
-.userContent{
+.userContent {
   width: 80%;
   background-color: #1a1a11;
   height: 100%;
-  background-color: #f0f0f0
+  background-color: #f0f0f0;
 }
 
-.userContent ul{
-list-style: none;
-width: 100%;
-padding: 0;
-
+.userContent ul {
+  list-style: none;
+  width: 100%;
+  padding: 0;
 }
 
-.userContent ul li{
+.userContent ul li {
   display: flex;
   justify-content: center;
 }
 
-.userModal{
+.userModal {
   width: 90%;
   border: 1px solid #1a1a11;
   display: flex;
   justify-content: space-between;
   padding: 1em;
   align-items: center;
- 
 }
-.userContent{
+.userContent {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.userContent .userDates{
+.userContent .userDates {
   display: flex;
   flex-direction: column;
 }
 
-.newUser{
+.newUser {
   width: 30%;
   border: 1px solid #202020;
   padding: 1em;
@@ -265,10 +279,9 @@ padding: 0;
   justify-content: center;
   background-color: #878787;
   align-content: center;
-  
 }
 
-.newUser form{
+.newUser form {
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -278,39 +291,238 @@ padding: 0;
   background-color: #f0f0f0;
 }
 
-
-.atenderUser{
-width: 100%;
-border: 1px solid violet;
-background-color: rgb(187, 208, 248);
-display: flex;
-flex-direction: column;
-height: 100%;
-align-items: center;
-z-index: 1;
+.atenderUser {
+  width: 100%;
+  border: 1px solid violet;
+  background-color: rgb(187, 208, 248);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  z-index: 1;
 }
 
-.atenderUser form{
-height: 100%;
-width: 60%;
-padding: 1em;
-border: 1px solid #b91f1f;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap:1em;
-background-color: #fafafa;
+.atenderUser form {
+  height: 100%;
+  width: 60%;
+  padding: 1em;
+  border: 1px solid #b91f1f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  background-color: #fafafa;
 }
 
-.atenderUser form span{
+.atenderUser form span {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
-.canal-recibo{
+.canal-recibo {
   display: flex;
   width: 50%;
 }
-.atenderUser .canal-recibo span{
+.atenderUser .canal-recibo span {
   flex-direction: row;
+}
+
+/* USER LOGIN */
+.user-login {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  justify-content:center;
+  align-items: center;
+  align-content: center;
+  gap: .4rem;
+  padding:1rem;
+  
+
+}
+.user-login .user-info{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.user-login .user-info p{
+  margin: 0;
+  text-wrap: nowrap;
+  font-weight: bold;
+  text-transform: capitalize;
+
+}
+
+.user-login .user-info small{
+color: #7e7e7e;
+  
+}
+.user-login .avatar {
+  border:1px solid rgb(210, 203, 203);
+  padding: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.user-login .avatar img {
+  width: 100%;
+  object-fit: scale-down;
+}
+
+
+/* user-page */
+
+.user-page{
+  width: 100%;
+}
+
+.user-page .table-users{
+  width: 100%;
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  position: relative;
+}
+.user-page .table-users table{
+  width: 100%;
+ 
+}
+.user-page .table-users table thead{
+  background-color: #eee;
+
+
+}
+
+.user-page .table-users table tbody tr{
+border-bottom: 1px solid #eee;
+margin-bottom: 10px;
+
+  
+}
+.user-page .table-users table th,td{
+text-align: left;
+border: none;
+text-transform: capitalize;
+  
+}
+
+.user-page .table-users table tr .table-user-mail{
+  text-transform: lowercase;
+}
+
+.user-page .table-users table tbody td img{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: .5px solid #adadad;
+
+}
+
+.user-page .table-users table button{
+  cursor: pointer;
+}
+
+.table-users .user-active{
+color: #49bc59;
+font-weight: bold;
+background-color: #EBFCED;
+padding: .6rem 2rem;
+margin: 0;
+text-align: center;
+border-radius: 10px;
+width: min-content;
+}
+
+.table-users .users-menu{
+  position: relative;
+}
+
+.user-menu-modal{ 
+  right: 80px;
+  top: 45px;
+  padding: 1em;
+  position: absolute;
+  background-color: #eee;
+  border: 1px solid #222;
+  z-index: 10;
+  display:none
+}
+
+.table-users .users-menu .user-menu-modal-active{ 
+display: flex;
+}
+
+.user-menu-modal ul{
+list-style-type: none;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 1em;
+} 
+
+
+.menu-edit-modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #38436465;
+  border: 1px solid #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+ 
+
+}
+
+.menu-edit-modal .edit-container{
+  background-color: #eee;
+  padding: 1em;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-edit-modal .edit-container form{
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap:.5rem;
+  width: 50%;
+
+}
+
+.menu-edit-modal .edit-container form img{
+  border-radius: 50%;
+  width: 200px;
+  object-fit: cover;
+  height: 200px;
+}
+
+.menu-edit-modal .edit-container form input{
+  padding: .4rem;
+}
+
+.menu-edit-modal .edit-container form button{
+  cursor: pointer;
+}
+
+
+/* CLIENTES */
+
+.client-page{
+  width: 100%;
+  padding: 1em;
 }

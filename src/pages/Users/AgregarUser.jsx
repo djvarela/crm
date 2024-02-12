@@ -1,4 +1,4 @@
-export const AgregarUser = ({ setUsers, users }) => {
+export const AgregarUser = ({ setUsers, usersState }) => {
   const Reader = new FileReader();
 
   function onAvatar(e) {
@@ -30,7 +30,7 @@ export const AgregarUser = ({ setUsers, users }) => {
       password: 1234,
     };
 
-    setUsers([...users, usersModel]);
+    setUsers([...usersState, usersModel]);
 
     const locationUsers = JSON.parse(localStorage.getItem("users")) || [];
     locationUsers.push(usersModel);

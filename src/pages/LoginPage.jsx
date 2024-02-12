@@ -5,8 +5,8 @@ import "../assets/css/normalize.css";
 import "../assets/css/login.css";
 
 export const LoginPage = () => {
+
   const { login } = useContext(AuthContext);
-  console.log(login);
   const navigation = useNavigate();
 
   function onLogin(e) {

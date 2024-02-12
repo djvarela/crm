@@ -427,45 +427,28 @@ text-transform: capitalize;
 
 .user-page .table-users table button{
   cursor: pointer;
+  position: relative;
 }
 
-.table-users .user-active{
-color: #49bc59;
+.table-users table .estado-user{
 font-weight: bold;
-background-color: #EBFCED;
 padding: .6rem 2rem;
 margin: 0;
 text-align: center;
 border-radius: 10px;
+color:#F97378;
 width: min-content;
+background-color:#FFF2F3;
+}
+
+.table-users table tbody tr td .user-active{
+  background-color: #EBFCED;
+  color: #49bc59;
 }
 
 .table-users .users-menu{
   position: relative;
 }
-
-.user-menu-modal{ 
-  right: 80px;
-  top: 45px;
-  padding: 1em;
-  position: absolute;
-  background-color: #eee;
-  border: 1px solid #222;
-  z-index: 10;
-  display:none
-}
-
-.table-users .users-menu .user-menu-modal-active{ 
-display: flex;
-}
-
-.user-menu-modal ul{
-list-style-type: none;
-padding: 0;
-display: flex;
-flex-direction: column;
-gap: 1em;
-} 
 
 
 .menu-edit-modal{
@@ -483,6 +466,70 @@ gap: 1em;
   padding: 1em;
  
 
+}
+
+.user-menu-modal{ 
+  right: 100%;
+  top: -10px; 
+  transform: translateX(70%);
+  padding: .4rem;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px #eee;
+  z-index: -10;
+  top: 10px;
+  opacity: 0;
+  display:flex;
+  border: 1px solid #a09e9e44;
+  transition: .45s all;
+  flex-direction: column;
+align-items: flex-end;
+
+}
+
+.table-users .users-menu .user-menu-modal-active{ 
+opacity: 1;
+z-index: 10;
+transform: translateX(0%);
+padding: .5rem;
+}
+
+.user-menu-modal ul{
+list-style-type: none;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 1em;
+margin: 0;
+padding: .5rem;
+} 
+
+
+
+.user-menu-modal ul li{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+} 
+
+.table-users .user-menu-modal  button{
+  border: none;
+  font-weight: bold;
+  background-color:transparent;
+  color: inherit;
+} 
+
+
+
+.user-menu-modal .edit-user{
+  background-color: #7893c248;
+  color: #5C94FF;
+}
+.user-menu-modal .delete-user{
+background-color: #FEF4F5;
+color: #E71D36;
 }
 
 .menu-edit-modal .edit-container{

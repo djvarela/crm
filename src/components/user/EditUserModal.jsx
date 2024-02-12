@@ -31,9 +31,7 @@ function handleEditSubit(e) {
 
  const estado = e.target.estado.value == 'Activo' ? true : false;
 
-console.log({estado})
-
-  const avatar = document.getElementById("avatarEdit");
+ const avatar = document.getElementById("avatarEdit");
 
   Reader.onload = (e) => {
     fileAvatar.src = e.target.result;

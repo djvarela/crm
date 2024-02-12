@@ -1,4 +1,4 @@
-export const AgregarUser = ({ setUsers, usersState }) => {
+export const AgregarUser = ({ setUsers, usersState,setAddUser }) => {
   const Reader = new FileReader();
 
   function onAvatar(e) {
@@ -17,7 +17,9 @@ export const AgregarUser = ({ setUsers, usersState }) => {
     Reader.onload = (e) => {
       fileAvatar.src = e.target.result;
     };
-    const img = Reader.result;
+    const imgResult = Reader.result;
+ 
+  const  img = imgResult == null ? avatarImg.src : img 
 
     const usersModel = {
       id: self.crypto.randomUUID(),
@@ -41,46 +43,66 @@ export const AgregarUser = ({ setUsers, usersState }) => {
 
     e.target.reset();
 
+    setAddUser(false)
     //TODO:  notificar que fue guardado el usuario
   }
 
   return (
     <section className="add-user">
-      <h2>Agregar Nuevo usuario</h2>
-
-      <div className="form-Aad-User">
+      <div className="form-add-user">
+        <h2>Agregar nuevo usuario</h2>
         <form
           onSubmit={onSubmit}
           encType="multipart/form-data"
           autoComplete="off"
         >
-          <span>
-            <img src="" width={"100px"} alt="" id="avatar" />
-            <label htmlFor="avatar">Avatar</label>
+          <div className="avatar-add-container">
+            <img
+              src="/icons/avatar-user.svg"
+              width={"100px"}
+              alt=""
+              id="avatar"
+            />
+            <label htmlFor="fileAvatar">+</label>
             <input
               type="file"
               name="avatar"
               id="fileAvatar"
-              required
+              hidden
+            
               onChange={(e) => {
                 onAvatar(e);
               }}
             />
-          </span>
+          </div>
 
-          <label htmlFor="nombe">Nombre</label>
-          <input type="text" name="nombre" id="nombre" />
+          <div className="info-add-container">
+            <span>
+              <label htmlFor="nombe">Nombre:</label>
+              <input type="text" name="nombre" id="nombre" required/>
+            </span>
+            <span>
+              <label htmlFor="apellido">Apellido:</label>
+              <input type="text" name="apellido" id="apellido" />
+            </span>
+            <span>
+              <label htmlFor="rol">Rol:</label>
+              <input type="text" name="rol" id="rol" required/>
+            </span>
+            <span>
+              <label htmlFor="mail">Email:</label>
+              <input type="text" id="email" name="email" required/>
+            </span>
 
-          <label htmlFor="apellido">Apellido:</label>
-          <input type="text" name="apellido" id="apellido" />
+            <span className="buttons-add-user">
 
-          <label htmlFor="rol">Rol:</label>
-          <input type="text" name="rol" id="rol" />
-
-          <label htmlFor="mail">Email:</label>
-          <input type="text" id="email" name="email" />
-
-          <button>Guardar</button>
+            <button>Guardar</button>
+            <button
+            className="cancel-add-user"
+            onClick={()=>{setAddUser(false)}}
+            >Cancelar</button>
+            </span>
+          </div>
         </form>
       </div>
     </section>

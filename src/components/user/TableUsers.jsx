@@ -17,9 +17,9 @@ export const TableUsers = ({ usersState, setUsers }) => {
 
     modalMenu.classList.toggle("user-menu-modal-active");
 
-    // setTimeout(()=>{
-    //   modalMenu.classList.remove("user-menu-modal-active");
-    // },3000)
+    setTimeout(()=>{
+      modalMenu.classList.remove("user-menu-modal-active");
+    },3000)
   }
 
   function handleDeleteUser(id) {

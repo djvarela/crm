@@ -323,13 +323,20 @@ td {
   box-shadow: 1px 1px 1em #d6d0d0;
 }
 
-.buttons-add-user{
+.info-add-container .buttons-add-user{
   display: flex;
   gap: 1em;
   width: 100%;
   align-items: center;
   justify-content: center;
+ 
 }
+.add-user .info-add-container  button{
+
+display: inline;
+text-align: center;
+}
+
 .info-add-container
 .cancel-add-user{
   color: #f97378;
@@ -694,9 +701,67 @@ td {
 }
 
 
-/* CLIENTES */
+/* Customer */
 
-.client-page {
+.customer-page {
   width: 100%;
   padding: 1em;
 }
+
+.add-customer{
+  background-color: #eee;
+  padding: 1em;
+}
+
+.add-customer form{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: .5em;
+}
+
+.customer-table{
+  width: 100%;
+}
+
+.customer-table table{
+  width: 100%;
+}
+
+.customer-table table thead tr {
+background-color: #5c94ff;
+color: #eee;
+font-weight: bold;
+}
+.customer-table table tbody tr td {
+  border-bottom: 1px solid #b1b1b37a;
+  padding: .7rem;
+}
+
+/* Opportunities Page */
+
+.opportunities-page{
+  width: 100%;
+}
+.opportunities-page .opportunities-table {
+  width: 100%;
+}
+.opportunities-page .opportunities-table table{
+  width: 100%;
+}
+.opportunities-page .opportunities-table table th{
+  border: none;
+  text-align: start;
+}
+.opportunities-page .opportunities-table table thead{
+  background-color: var(--green);
+  color: #eee;
+}
+
+.opportunities-page .opportunities-table table tbody td{
+  border-bottom: 1px solid #17a072;
+  text-transform: none;
+}
+
+
+/* -------------------- */

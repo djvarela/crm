@@ -1,40 +1,40 @@
-import { useState } from "react";
+import {  useContext, useState } from "react";
+import { AuthContext } from "../auth/context/AuthContext";
 import { Link } from "react-router-dom";
-
-import { getClientsFormSearch } from "../helpers";
 import { AtenderCliente } from "../components";
+import { getClientsFormSearch } from "../helpers";
+
 
 export const SearchCliente = () => {
-
-  
-  const results = getClientsFormSearch(search);
+  const {searchState} = useContext(AuthContext)
 
   const [ viewModal, setViewModal ] = useState(false);
 
-  const onModal = (li) => {
-   
-    setAtender(li);
-    setViewModal(!viewModal);
+  const result = getClientsFormSearch(searchState)
 
-  };
+const onModal = () => {
 
-  return (
+     setViewModal(!viewModal);
+
+};
+
+return (
     <>
       <div className="searchUserModal">
         <button>x</button>
 
         <div className="userContent">
           <ul>
-            {results.map((li) => (
+            {result.map((li) => (
               <li key={li.id}>
                 <div className="userModal">
-                  {li.nombre} {li.apellido}
+                  {li.name}
                   <div className="userDates">
-                    <small>{li.telefono}</small>
+                    <small>{li.tel}</small>
                     <small>{li.email}</small>
                   </div>
 
-                  <button onClick={() => onModal(li)}>
+                  <button onClick={onModal}>
                    Atender</button>
                 </div>
               </li>
@@ -45,7 +45,7 @@ export const SearchCliente = () => {
         </div>
       </div>
 
-      {viewModal && (<AtenderCliente  />)}
+      {viewModal && (<AtenderCliente atender={result} />)}
     </>
   );
 };

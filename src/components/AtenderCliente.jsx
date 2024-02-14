@@ -2,19 +2,20 @@ import {  useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-export const AtenderCliente = () => {
+export const AtenderCliente = ({atender}) => {
+
   const navigation = useNavigate();
   const mensajeRef = useRef();
   const emailRef = useRef();
   const wpRef = useRef();
   const rrssRef = useRef();
 
+  const users = JSON.parse(localStorage.getItem('users')) || [];
   const newLeadSubmit = (e) => {
-
     e.preventDefault();
 
     const localLeads = JSON.parse(localStorage.getItem("leads")) || [];
-
+   
     const canales = [
       {
         email: emailRef.current.checked,
@@ -34,12 +35,20 @@ export const AtenderCliente = () => {
     });
 
     const lead = {
-      id: atender.id,
+      id: atender[0].id,
       canal: canal[0],
       mensaje: mensajeRef.current.value,
+      date: new Date(),
+      assigned_user: e.target.usuario.value,
+      status: false,
+      status_info: false,
+
     };
 
     localLeads.push(lead);
+
+
+    console.log({lead})
 
     localStorage.setItem("leads", JSON.stringify(localLeads));
 
@@ -53,7 +62,7 @@ export const AtenderCliente = () => {
 
       <form onSubmit={newLeadSubmit}>
         <span>
-          <p>{`${atender.nombre} ${atender.apellido} `} </p>
+          <p>{`${atender[0].name}`} </p>
         </span>
 
         <div className="canal-recibo">
@@ -71,6 +80,16 @@ export const AtenderCliente = () => {
             <input type="radio" id="wp" ref={wpRef} name="canal" />
           </span>
         </div>
+        <span>
+          <label htmlFor="">Asignar usuario:</label>
+          <select name="usuario" id="">
+                  {
+                    users.map(user =>(
+                      <option key={user.id} value={user.id}>{user.nombre} {user.apellido}</option>
+                    ))
+                  }
+          </select>
+        </span>
         <span>
           <label htmlFor="mensaje">Mensaje:</label>
           <textarea id="mensaje" ref={mensajeRef}></textarea>

@@ -1,25 +1,27 @@
 
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../auth/context/AuthContext";
+import { useContext } from "react";
 
 
 const FormsSearch = () => {
-  // const {setSearch} = useContext(SearchContext)
+  const {setSearchState} = useContext(AuthContext)
   const navigation = useNavigate();
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
 
-  //  const text = e.target[0].value;
+    const search = e.target.search.value;
+    console.log(search)
 
-  //  setSearch(text)
-
-  //  navigation(`./search?q=${text}`)
+    setSearchState(search)
+   navigation(`./search?q=${search}`)
   };
   
   return (
     <>
      <form onSubmit={onSearchSubmit}>
-            <input type="text" name="searchText" />
+            <input type="text" name="search" />
             <button>🔍</button>
           </form>
     </>

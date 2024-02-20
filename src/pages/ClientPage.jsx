@@ -13,7 +13,8 @@ const addCustomer ={
   id: crypto.randomUUID(),
   name: e.target.nombre.value,
   email: e.target.email.value,
-  tel: e.target.tel.value
+  tel: e.target.tel.value,
+  registered: new Date()
 
 }
 

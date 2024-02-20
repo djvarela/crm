@@ -8,7 +8,8 @@
   box-sizing: border-box;
   font-family: Dosis;
   --green: #49bc59;
-  --blue: #0090e5
+  --blue: #0090e5;
+  --bg: #F5F7FE
 }
 html,
 body {
@@ -25,7 +26,7 @@ button{
 }
 
 body {
-  background-color: #fafaff;
+  background-color: var(--bg);
 }
 header {
   width: 100%;
@@ -78,7 +79,7 @@ nav form button {
   display: flex;
   flex-direction: column;
   border: 1px solid #202020;
-  background-color: #f5f7f9;
+  background-color: var(--bg);
   position: relative;
 }
 /*--- ASIDE ---*/
@@ -142,6 +143,7 @@ aside li a:hover aside li a img {
 }
 
 main {
+  position: relative;
   width: 97%;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -358,7 +360,7 @@ text-align: center;
   flex-direction: column;
   align-items: center;
   transition: 0.35s all;
-
+  position: relative;
   z-index: 1;
   background-color: #1b1b1b9a;
 }
@@ -367,6 +369,7 @@ text-align: center;
   background-color: #1a1a11;
   height: 100%;
   background-color: #f0f0f0;
+
 }
 
 .userContent ul {
@@ -392,6 +395,7 @@ text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
 }
 .userContent .userDates {
   display: flex;
@@ -738,6 +742,93 @@ font-weight: bold;
   padding: .7rem;
 }
 
+
+.viewProfile{
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: var(--bg);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  & h2{
+    color: #404fda;
+    
+  }
+  & .date-profiles{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  & .info-profile{
+    background-color: #fff;
+    width: 100%;
+    padding: 1em;
+   
+  }
+
+  & .info{
+    border-top: 1px solid rgb(199, 199, 199);
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    background-color: #fff;
+   
+    }
+  & .date-profiles ul{
+    padding: 1em;
+    width: 50%;
+    background-color: #fff;
+    list-style: none;
+    }
+  & .op-seguimiento{
+    background-color: #fff;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  & .op-seguimiento ul{
+    display:flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+  }
+  & .op-seguimiento ul li{
+
+   padding: 1em;
+    
+  }
+  & .op-seguimiento ul li .row{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #eee;
+   padding: 1em;
+   width: 100%;
+
+
+  }
+  & .row h2{
+    font-size: 1rem;
+    color: #17a072;
+  }
+  & .row-info{
+    border-top: 1px solid transparent;
+    background-color: var(--bg);
+    padding: 1em;
+    width: 100%;
+    display: block;
+   
+  }
+  
+    
+}
+
+
 /* Opportunities Page */
 
 .opportunities-page{
@@ -763,5 +854,19 @@ font-weight: bold;
   text-transform: none;
 }
 
+
+.op-info{
+  border: 1px solid red;
+  width: 100%;
+  padding: 1em;
+
+}
+.customer-info{
+
+  & h2{
+    color: rgb(80, 119, 228);
+  }
+
+}
 
 /* -------------------- */

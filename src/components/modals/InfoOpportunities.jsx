@@ -2,7 +2,7 @@
 
 const InfoOpportunities = ({data}) => {
   
-  console.log(data[0])
+console.log({data})
   
   return (
     <section className="op-info">
@@ -11,12 +11,7 @@ const InfoOpportunities = ({data}) => {
       <section className="customer-info">
         <h2>{data[0].cliente}</h2>
         <div className="custormer-dates">
-          <ul>
-            <li>Correo: <strong>{data[0].email}</strong></li>
-            <li>Telefono: <strong>{data[0].tel}</strong></li>
-
-          </ul>
-
+          <p>{data[0].consulta}</p>
         </div>
 
       </section>

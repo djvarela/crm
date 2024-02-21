@@ -1,10 +1,11 @@
 import {  Home, NavBar, SearchCliente } from "../components";
 import { Route, Routes } from "react-router-dom";
-import { AgregarUser, ClientPage, UserPage } from "../pages";
+import { AgregarUser, ClientPage, UserPage, ConfigPage } from "../pages";
 
 import React, { useContext } from "react";
 import Aside from "../components/Aside";
 import OpportunitiesPage from "../pages/OpportunitiesPage";
+
 
 export const CrmRoutes = () => {
 
@@ -38,6 +39,7 @@ export const CrmRoutes = () => {
 
                 <Route path="/usuarios/agregar" element={<AgregarUser />} />
                 <Route path="/search" element={<SearchCliente />} />
+                <Route path="/config" element={<ConfigPage/>}   />
                 {/* <Route path="/alta-cliente" element={<FormsNuevoCliente />} /> */}
               </Routes>
             </main>

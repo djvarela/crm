@@ -11,16 +11,17 @@ const OpportunitiesPage = () => {
       const users = JSON.parse(localStorage.getItem('users')) || [];
       const leads = JSON.parse(localStorage.getItem('leads')) || [];
       const customers = JSON.parse(localStorage.getItem('customers')) || [];
-      
+      console.log({leads})
       const newData = leads.map((lead, i) => {
         const usuario = users.find(user => user.id === lead.assigned_user) || {};
 
-        const cliente = customers.find(customer => customer.id === lead.id) || {};
+        const cliente = customers.find(customer => customer.id === lead.id_customer) || {};
         
         const date = new Date(lead.date).toLocaleString();
 
         return {
-          id_lead: crypto.randomUUID(),
+          id:crypto.randomUUID(),
+          id_lead: lead.id,
           cliente: cliente.name || '',
           contacto: lead.canal || '',
           consulta: lead.mensaje || '',

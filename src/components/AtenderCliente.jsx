@@ -35,7 +35,8 @@ export const AtenderCliente = ({atender}) => {
     });
 
     const lead = {
-      id: atender[0].id,
+      id: crypto.randomUUID(),
+      id_customer: atender[0].id,
       canal: canal[0],
       mensaje: mensajeRef.current.value,
       date: new Date(),

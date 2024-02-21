@@ -63,6 +63,11 @@ const Aside = () => {
             Oportunidades
           </Link>
         </li>
+        <li>
+          <Link to='/config'>
+            Config
+          </Link>
+        </li>
       </ul>
 
       <footer>

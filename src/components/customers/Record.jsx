@@ -1,101 +1,87 @@
-import{ useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-const Record = ({result,setViewProfile}) => {
+const Record = ({ result, setViewProfile }) => {
+  const [recordState, setRecord] = useState([]);
 
- const [ recordState, setRecord ] = useState([]) 
-  
-useEffect(() => {
+  useEffect(() => {
 
-  const fetchData = () =>{
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const leads = JSON.parse(localStorage.getItem('leads')) || [];
-
-  const leadUser = leads.filter((data) => data.id === result[0].id)
-  console.log({leadUser})
-
-  const newDate = leadUser.map((data) =>{
-  let fecha = new Date(data.date);
-    
-  const usuario = users.find(user => user.id === data.assigned_user) || {};
-
-      return{
-        id: crypto.randomUUID(),
-        canal: data.canal,
-        agente: `${usuario.nombre} ${usuario.apellido}`,
-        estado: data.status ? 'Completado' : 'En espera',
-        mensaje: data.mensaje,
-       fecha: fecha.toLocaleString()
-        
-      }
-
-    })
-    console.log(newDate)
-
-
-  setRecord(newDate);
-  }
-
-  fetchData()
-
-
-}, [])
-  
-  let fecha = new Date(result[0]?.registered);
+    const fetchData = () => {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const leads = JSON.parse(localStorage.getItem("leads")) || [];
+      const leadUser = leads.filter((data) => data.id_customer === result[0].id);
       
+      console.log({leads})
+      const newDate = leadUser.map((data) => {
+
+        let fecha = new Date(data.date);
+        const usuario = users.find((user) => user.id === data.assigned_user) || {};
+
+        return {
+          id: crypto.randomUUID(),
+          canal: data.canal,
+          agente: `${usuario.nombre} ${usuario.apellido}`,
+          estado: data.status ? "Completado" : "En espera",
+          mensaje: data.mensaje,
+          fecha: fecha.toLocaleString(),
+        };
+      });
+
+      setRecord(newDate);
+
+    
+    };
+
+    fetchData();
+  }, []);
+  let fecha = new Date(result[0]?.registered);
 
   return (
- 
     <section className="viewProfile">
-    <button
-    onClick={()=> setViewProfile(false)}
-    >CERRAR</button>
+      <button onClick={() => setViewProfile(false)}>CERRAR</button>
 
-    <div className="date-profiles">
-      
+      <div className="date-profiles">
         <div className="info-profile">
           <h2>{result[0].name}</h2>
         </div>
 
         <div className="info">
-            <ul>
-              <li>Email: <strong>{result[0].email}</strong></li>
-              <li>Tel: <strong>{result[0].tel}</strong></li>
-              <li>Registrado : <strong>{fecha?.toLocaleString()}</strong></li>
-            </ul>
+          <ul>
+            <li>
+              Email: <strong>{result[0].email}</strong>
+            </li>
+            <li>
+              Tel: <strong>{result[0].tel}</strong>
+            </li>
+            <li>
+              Registrado : <strong>{fecha?.toLocaleString()}</strong>
+            </li>
+          </ul>
 
-            <ul>
-              <li>sAS</li>
-              
-            </ul>
+          <ul>
+            <li>sAS</li>
+          </ul>
         </div>
+      </div>
 
-    </div>
-
-    <div className="op-seguimiento">
-      <h3>Oportunidades realacionadas</h3>
-      <ul>
-        {
-          recordState.map( (date) => (
+      <div className="op-seguimiento">
+        <h3>Oportunidades realacionadas</h3>
+        <ul>
+          {recordState.map((date) => (
             <li key={date.id}>
               <section className="row">
                 <h2>{date.estado}</h2>
                 <p>{date.fecha}</p>
                 <p>{date.agente}</p>
-               
-
               </section>
               <span className="row-info">
-                  <p>{date.mensaje}</p>
-                </span>
-              </li>
-          
-          ) )
-        }
-      </ul>
+                <p>{date.mensaje}</p>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
 
-    </div>
-  </section>
-  )
-}
-
-export default Record
+export default Record;

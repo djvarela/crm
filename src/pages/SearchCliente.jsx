@@ -12,7 +12,7 @@ export const SearchCliente = () => {
   const [viewProfile, setViewProfile] = useState(false);
 
   const result = getClientsFormSearch(searchState);
-  console.log(result);
+  
 
 
 

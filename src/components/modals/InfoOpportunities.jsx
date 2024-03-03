@@ -1,12 +1,46 @@
+import { useState } from "react";
+
+const InfoOpportunities = ({ data }) => {
+
+ const leads = JSON.parse(localStorage.getItem('leads')) || [];
+ const lead = leads.filter((lead) => lead.id === data[0].id_lead)
+ const [status, setStatus] = useState(lead)
 
 
-const InfoOpportunities = ({data}) => {
-  
-console.log({data})
-  
+function handleSubmit(e){
+  e.preventDefault();
+
+ const getStatus = [...status ];
+
+ const newAction = {
+   proximaAccion: e.target.proxAccion.value,
+   mensaje: e.target.mensaje.value
+ };
+ 
+ getStatus[0].status_info.push(newAction);
+
+ setStatus(getStatus);
+
+const updatedLeads = leads.map(lead => {
+
+     if (lead.id === data[0].id_lead) {
+       return {
+         ...lead,
+         status_info: getStatus[0].status_info
+       };
+     } else {
+       return lead;
+     }
+   });
+
+
+   localStorage.setItem('leads', JSON.stringify(updatedLeads))
+}
+
+
   return (
     <section className="op-info">
-    <h2>Descripcion de la oportunidad</h2>
+      <h2>Descripcion de la oportunidad</h2>
 
       <section className="customer-info">
         <h2>{data[0].cliente}</h2>
@@ -14,11 +48,24 @@ console.log({data})
           <p>{data[0].consulta}</p>
         </div>
 
+        <button>Atender</button>
       </section>
-    
-    
-    </section>
-  )
-}
 
-export default InfoOpportunities
+      <div className="atenderOportunidad">
+        <form onSubmit={handleSubmit}>
+       
+          <label htmlFor="">Proxima Accion:</label>
+          <select name="proxAccion" id="">
+            <option value="a">A</option>
+          </select>
+
+          <label htmlFor="">Accion realizada:</label>
+          <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default InfoOpportunities;

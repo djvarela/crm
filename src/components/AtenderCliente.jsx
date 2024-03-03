@@ -42,7 +42,7 @@ export const AtenderCliente = ({atender}) => {
       date: new Date(),
       assigned_user: e.target.usuario.value,
       status: false,
-      status_info: false,
+      status_info: [],
 
     };
 

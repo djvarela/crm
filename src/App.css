@@ -868,5 +868,11 @@ font-weight: bold;
   }
 
 }
+.atenderOportunidad form{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  width: 100%;
+}
 
 /* -------------------- */

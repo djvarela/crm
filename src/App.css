@@ -799,7 +799,7 @@ font-weight: bold;
     padding: 0;
   }
   & .op-seguimiento ul li{
-
+   border: 1px solid #eee; 
    padding: 1em;
     
   }
@@ -874,5 +874,35 @@ font-weight: bold;
   flex-direction: column;
   width: 100%;
 }
+.action-info{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  order:1px solid #222;
+  overflow: hidden;
+  padding: 1em;
+}
+.action-info span{
+  display: flex;
+  width: 95%;
+  flex-direction: column;
+ 
+  position: relative;
+}
 
+.action-info span::before{
+  content: '';
+  background-color: #0090e5;
+  width: 10px;
+  height: 200px;
+  inset: 0;
+  left: -25px;
+  position: absolute;
+}
+
+.action-info .action-info-message{
+display: flex;
+gap:1em;
+justify-content: space-evenly;
+}
 /* -------------------- */

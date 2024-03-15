@@ -1,42 +1,41 @@
 import { useState } from "react";
 
 const InfoOpportunities = ({ data }) => {
+  const leads = JSON.parse(localStorage.getItem("leads")) || [];
+  const lead = leads.filter((lead) => lead.id === data[0].id_lead);
+  const [status, setStatus] = useState(lead);
 
- const leads = JSON.parse(localStorage.getItem('leads')) || [];
- const lead = leads.filter((lead) => lead.id === data[0].id_lead)
- const [status, setStatus] = useState(lead)
+  function handleSubmit(e) {
+    e.preventDefault();
 
+    const getStatus = [...status];
 
-function handleSubmit(e){
-  e.preventDefault();
+    const fecha = new Date().toLocaleString();
 
- const getStatus = [...status ];
+    const newAction = {
+      id: crypto.randomUUID(),
+      date: fecha,
+      proximaAccion: e.target.proxAccion.value,
+      mensaje: e.target.mensaje.value,
+    };
 
- const newAction = {
-   proximaAccion: e.target.proxAccion.value,
-   mensaje: e.target.mensaje.value
- };
- 
- getStatus[0].status_info.push(newAction);
+    getStatus[0].status_info.push(newAction);
 
- setStatus(getStatus);
+    setStatus(getStatus);
 
-const updatedLeads = leads.map(lead => {
+    const updatedLeads = leads.map((lead) => {
+      if (lead.id === data[0].id_lead) {
+        return {
+          ...lead,
+          status_info: getStatus[0].status_info,
+        };
+      } else {
+        return lead;
+      }
+    });
 
-     if (lead.id === data[0].id_lead) {
-       return {
-         ...lead,
-         status_info: getStatus[0].status_info
-       };
-     } else {
-       return lead;
-     }
-   });
-
-
-   localStorage.setItem('leads', JSON.stringify(updatedLeads))
-}
-
+    localStorage.setItem("leads", JSON.stringify(updatedLeads));
+  }
 
   return (
     <section className="op-info">
@@ -53,13 +52,12 @@ const updatedLeads = leads.map(lead => {
 
       <div className="atenderOportunidad">
         <form onSubmit={handleSubmit}>
-       
-          <label htmlFor="">Proxima Accion:</label>
+          <label htmlFor="">Accion realizada:</label>
           <select name="proxAccion" id="">
             <option value="a">A</option>
           </select>
 
-          <label htmlFor="">Accion realizada:</label>
+          <label htmlFor="">Comentario:</label>
           <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
           <button type="submit">Enviar</button>
         </form>

@@ -4,17 +4,18 @@ const Record = ({ result, setViewProfile }) => {
   const [recordState, setRecord] = useState([]);
 
   useEffect(() => {
-
     const fetchData = () => {
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const leads = JSON.parse(localStorage.getItem("leads")) || [];
-      const leadUser = leads.filter((data) => data.id_customer === result[0].id);
-      
-      console.log({leads})
-      const newDate = leadUser.map((data) => {
+      const leadUser = leads.filter(
+        (data) => data.id_customer === result[0].id
+      );
 
+      console.log({ leadUser });
+      const newDate = leadUser.map((data) => {
         let fecha = new Date(data.date);
-        const usuario = users.find((user) => user.id === data.assigned_user) || {};
+        const usuario =
+          users.find((user) => user.id === data.assigned_user) || {};
 
         return {
           id: crypto.randomUUID(),
@@ -22,13 +23,12 @@ const Record = ({ result, setViewProfile }) => {
           agente: `${usuario.nombre} ${usuario.apellido}`,
           estado: data.status ? "Completado" : "En espera",
           mensaje: data.mensaje,
+          info: data.status_info,
           fecha: fecha.toLocaleString(),
         };
       });
 
       setRecord(newDate);
-
-    
     };
 
     fetchData();
@@ -76,6 +76,23 @@ const Record = ({ result, setViewProfile }) => {
               <span className="row-info">
                 <p>{date.mensaje}</p>
               </span>
+
+              {date.info.map((info) => (
+                
+                <div className="action-info" key={info.id}>
+                  <span>
+                    <p><strong>Accion realizada:</strong> {info.proximaAccion}</p>
+                      
+                    <div className="action-info-message">
+
+                      <p><em>{info.mensaje}</em></p>
+                      <p>{(info.date)}</p>
+
+                    </div>
+                  
+                  </span>
+                </div>
+              ))}
             </li>
           ))}
         </ul>

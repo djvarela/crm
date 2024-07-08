@@ -19,22 +19,19 @@ const Aside = () => {
       <ul>
         <li>
           <Link to="/home">
-            <img src="/public/icons/home.svg" alt="home Icon" />
+            <img src="/icons/home.svg" alt="home Icon" />
             Dashboard
           </Link>
         </li>
         <li>
           <Link to="/users">
-            <img src="/public/icons/users.svg" alt="" />
+            <img src="/icons/users.svg" alt="" />
             Usuarios
           </Link>
           <ul>
             <li>
               <Link to="/usuarios/agregar">
-                <img
-                  src="/public/icons/add-user.svg"
-                  alt="Add user icon"
-                />
+                <img src="/icons/add-user.svg" alt="Add user icon" />
                 Nuevo Usuario
               </Link>
             </li>
@@ -42,8 +39,7 @@ const Aside = () => {
         </li>
         <li>
           <Link to="/clients">
-            {" "}
-            <img src="/public/icons/clients.svg" alt="" />
+            <img src="/icons/clients.svg" alt="" />
             Clientes
           </Link>
         </li>
@@ -64,7 +60,8 @@ const Aside = () => {
           </Link>
         </li>
         <li>
-          <Link to='/config'>
+          <Link to="/config">
+            <img src="/icons/config.svg" alt="Icon Config" width={30} />
             Config
           </Link>
         </li>

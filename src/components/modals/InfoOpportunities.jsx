@@ -4,6 +4,7 @@ const InfoOpportunities = ({ data }) => {
   const leads = JSON.parse(localStorage.getItem("leads")) || [];
   const lead = leads.filter((lead) => lead.id === data[0].id_lead);
   const [status, setStatus] = useState(lead);
+  const actionAction = JSON.parse(localStorage.getItem("optionAction"));
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +36,7 @@ const InfoOpportunities = ({ data }) => {
     });
 
     localStorage.setItem("leads", JSON.stringify(updatedLeads));
+    e.target.reset()
   }
 
   return (
@@ -53,8 +55,14 @@ const InfoOpportunities = ({ data }) => {
       <div className="atenderOportunidad">
         <form onSubmit={handleSubmit}>
           <label htmlFor="">Accion realizada:</label>
-          <select name="proxAccion" id="">
-            <option value="a">A</option>
+          <select name="proxAccion" id="" required>
+            <option value="">---</option>
+
+            {
+            actionAction.map((action) => (
+              <option value={action.name} key={action.id}>{action.name}</option>
+            ))
+            }
           </select>
 
           <label htmlFor="">Comentario:</label>

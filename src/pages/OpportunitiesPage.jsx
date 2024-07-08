@@ -8,29 +8,31 @@ const OpportunitiesPage = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const leads = JSON.parse(localStorage.getItem('leads')) || [];
-      const customers = JSON.parse(localStorage.getItem('customers')) || [];
-      console.log({leads})
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const leads = JSON.parse(localStorage.getItem("leads")) || [];
+      const customers = JSON.parse(localStorage.getItem("customers")) || [];
+      console.log({ leads });
       const newData = leads.map((lead, i) => {
-        const usuario = users.find(user => user.id === lead.assigned_user) || {};
+        const usuario =
+          users.find((user) => user.id === lead.assigned_user) || {};
 
-        const cliente = customers.find(customer => customer.id === lead.id_customer) || {};
-        
+        const cliente =
+          customers.find((customer) => customer.id === lead.id_customer) || {};
+
         const date = new Date(lead.date).toLocaleString();
 
         return {
-          id:crypto.randomUUID(),
+          id: crypto.randomUUID(),
           id_lead: lead.id,
-          cliente: cliente.name || '',
-          contacto: lead.canal || '',
-          consulta: lead.mensaje || '',
+          cliente: cliente.name || "",
+          contacto: lead.canal || "",
+          consulta: lead.mensaje || "",
           date,
-          responsable: `${usuario.nombre || ''} ${usuario.apellido || ''}`,
-          estado: lead.status ? 'Completado' : 'En espera'
+          responsable: `${usuario.nombre || ""} ${usuario.apellido || ""}`,
+          estado: lead.status ? "Completado" : "En espera",
         };
       });
-      
+
       setData(newData);
     };
 
@@ -39,12 +41,12 @@ const OpportunitiesPage = () => {
 
   const handleViewLead = (id) => {
     setViewOp(!viewOp);
-    const info = data.filter(data => data.id_lead === id);
+    const info = data.filter((data) => data.id_lead === id);
     setOpportunities(info);
   };
 
   return (
-    <section className='opportunities-page'>
+    <section className="opportunities-page">
       <h2>Oportunidades en curso</h2>
       <div className="opportunities-table">
         <table>
@@ -60,10 +62,12 @@ const OpportunitiesPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(lead => (
+            {data.map((lead) => (
               <tr key={lead.id_lead}>
                 <td>
-                  <button onClick={() => handleViewLead(lead.id_lead)}>👁</button>
+                  <button onClick={() => handleViewLead(lead.id_lead)}>
+                    👁
+                  </button>
                 </td>
                 <td>{lead.cliente}</td>
                 <td>{lead.contacto}</td>
@@ -82,4 +86,3 @@ const OpportunitiesPage = () => {
 };
 
 export default OpportunitiesPage;
-

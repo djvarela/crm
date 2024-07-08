@@ -4,7 +4,7 @@ export const ClientPage = () => {
 
   const LocalCustomer = JSON.parse(localStorage.getItem('customers')) || [];
   const [customerState, setCustomerState] = useState(LocalCustomer);
-
+//TAREA: corregir, xq estos state se utilizan tmb FormsNuevoCliente
 
 return (
 

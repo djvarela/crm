@@ -4,8 +4,8 @@ export const Home = () => {
 
 
  const totalLeads = JSON.parse (localStorage.getItem('leads')) || [];
- const totalClients = JSON.parse (localStorage.getItem('clients')) || [];
-
+ const totalClients = JSON.parse (localStorage.getItem('customers')) || [];
+console.log(totalClients);
   return (
     <section className="home">
 

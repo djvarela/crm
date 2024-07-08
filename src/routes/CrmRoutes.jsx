@@ -5,6 +5,7 @@ import { AgregarUser, ClientPage, UserPage, ConfigPage } from "../pages";
 import React, { useContext } from "react";
 import Aside from "../components/Aside";
 import OpportunitiesPage from "../pages/OpportunitiesPage";
+import { FormsNuevoCliente } from "../components/FormsNuevoCliente";
 
 
 export const CrmRoutes = () => {
@@ -40,7 +41,7 @@ export const CrmRoutes = () => {
                 <Route path="/usuarios/agregar" element={<AgregarUser />} />
                 <Route path="/search" element={<SearchCliente />} />
                 <Route path="/config" element={<ConfigPage/>}   />
-                {/* <Route path="/alta-cliente" element={<FormsNuevoCliente />} /> */}
+                <Route path="/alta-cliente" element={<FormsNuevoCliente />} />
               </Routes>
             </main>
 

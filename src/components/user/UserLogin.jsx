@@ -6,7 +6,6 @@ export const UserLogin = () => {
 
   const {user} = useContext(AuthContext);
 
-
   return (
     <div className='user-login'>
         <div className="avatar">

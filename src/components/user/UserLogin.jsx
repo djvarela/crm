@@ -9,7 +9,7 @@ export const UserLogin = () => {
   return (
     <div className='user-login'>
         <div className="avatar">
-          <img src={user.avatar} width={'32px'} alt="" />
+          <img src={user.avatar} width={'32px'} alt="user avatar" />
         </div>
         <div className="user-info">
 

@@ -1,60 +1,59 @@
 import { useState } from "react";
 import "../assets/css/config.css";
+import { useLocalStorage } from "../hooks";
 
 export const ConfigPage = () => {
-  let actionLocal = JSON.parse(localStorage.getItem("optionAction")) || [];
+  const { setLocal, editLocal, storeValue, deleteValueLocal } =
+    useLocalStorage("optionAction");
 
-  const [optionAction, setOptionAction] = useState(actionLocal);
-  const [editAction, setEditAction] = useState();
+  const [editAction, setEditAction] = useState(false);
 
   function onSubmitAction(e) {
     e.preventDefault();
 
+    const inputValue = e.target[0].value.trim();
+
     let info = {
       id: crypto.randomUUID(),
-      name: e.target[0].value,
+      name: inputValue,
     };
-    setOptionAction([...optionAction, info]);
-    actionLocal.push(info)  
 
-    localStorage.setItem("optionAction", JSON.stringify(actionLocal));
+    if (!inputValue) {
+      alert("El nombre no puede estar vacío");
+      return;
+    }
+
+    setLocal(info);
+
     e.target[0].value = "";
   }
 
   function onSubmitEditAction(e) {
     e.preventDefault();
-    let id = e.target[0].dataset.id;
+    const id = e.target[0].dataset.id;
+    const inputValue = e.target[0].value.trim();
 
-    const newLocalAction = actionLocal.map((action) => {
-      if (action.id == id) {
-        return {
-          ...action,
-          name: e.target[0].value,
-        };
-      } else {
-        return action;
-      }
-    });
+    if (!inputValue) {
+      alert("El nombre no puede estar vacío");
+      return;
+    }
 
-    localStorage.setItem("optionAction", JSON.stringify(newLocalAction));
-    setOptionAction(newLocalAction);
+    editLocal(id, inputValue);
+
     setEditAction();
   }
 
   function handleEditAction(e) {
     let id = e;
 
-    const edit = optionAction.filter((option) => option.id == id).at();
+    const edit = storeValue.filter((option) => option.id == id).at();
 
     setEditAction(edit);
   }
 
-  function handleDeleteAction(e) {
-    const deleteAction = actionLocal.filter((action) => action.id !== e);
-
+  function handleDeleteAction(id) {
     if (window.confirm("¿Estás seguro de borrar esta opcion?")) {
-      localStorage.setItem("optionAction", JSON.stringify(deleteAction));
-      setOptionAction(deleteAction);
+      deleteValueLocal(id);
     }
   }
 
@@ -146,7 +145,7 @@ export const ConfigPage = () => {
             </tr>
           </thead>
           <tbody>
-            {optionAction.map((action) => (
+            {storeValue.map((action) => (
               <tr key={action.id}>
                 <td>{action.name}</td>
                 <td>

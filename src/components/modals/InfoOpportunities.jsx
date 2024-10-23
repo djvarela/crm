@@ -36,7 +36,7 @@ const InfoOpportunities = ({ data }) => {
     });
 
     localStorage.setItem("leads", JSON.stringify(updatedLeads));
-    e.target.reset()
+    e.target.reset();
   }
 
   return (
@@ -48,8 +48,6 @@ const InfoOpportunities = ({ data }) => {
         <div className="custormer-dates">
           <p>{data[0].consulta}</p>
         </div>
-
-        <button>Atender</button>
       </section>
 
       <div className="atenderOportunidad">
@@ -58,11 +56,11 @@ const InfoOpportunities = ({ data }) => {
           <select name="proxAccion" id="" required>
             <option value="">---</option>
 
-            {
-            actionAction.map((action) => (
-              <option value={action.name} key={action.id}>{action.name}</option>
-            ))
-            }
+            {actionAction.map((action) => (
+              <option value={action.name} key={action.id}>
+                {action.name}
+              </option>
+            ))}
           </select>
 
           <label htmlFor="">Comentario:</label>

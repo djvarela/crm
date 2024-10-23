@@ -15,6 +15,7 @@ export const ConfigPage = () => {
       name: e.target[0].value,
     };
     setOptionAction([...optionAction, info]);
+    actionLocal.push(info)  
 
     localStorage.setItem("optionAction", JSON.stringify(actionLocal));
     e.target[0].value = "";

@@ -1,0 +1,109 @@
+
+
+*{
+
+    font-family: 'Dosis';
+}
+.login-page{
+    width: 100%;
+    height: 100vh;
+    background-color: #232729;
+}
+
+.login-container{
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-image: url("../img/image.webp");
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+height: 100%;
+transition: .35s all;
+
+animation: bg .45s linear;
+
+}
+
+
+@keyframes bg {
+    
+    from{
+        filter: blur(10px);
+        opacity:0;
+    }to{
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+
+
+.forms-container{
+    width: 30%;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding: 1em;
+
+    border: 1px solid #e9f0ffc9;
+  
+    
+}
+.forms-container h2{
+    margin-top: 0;
+    font-weight: 400;
+    color: #eee;
+}
+.forms-container form {
+   color: #ffffff;
+    width: 60%;
+    height: 60%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1em;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #0000009a;
+    font-weight: bold;
+}
+
+.login-page form span, input{
+    width: 100%;
+    
+}
+
+.login-page form  input{
+    padding: .7rem;
+    background-color: transparent;
+    border: none;
+    margin-top: .5em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #eee;
+    outline: none;
+}
+
+.forms-container form button{
+    padding: .9em;
+    width: 10rem;
+    color: #eee;
+    outline: none;
+    font-weight: bold ;
+    border: 2px solid #fff;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .55s all;
+}
+
+.forms-container form button:hover{
+ 
+    background-color: #ffffff;
+    color: #222;
+}

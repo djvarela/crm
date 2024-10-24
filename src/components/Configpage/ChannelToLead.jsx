@@ -8,8 +8,8 @@ export const ChannelToLead = () => {
     useLocalStorage("chanelAction");
 
   const [editChannel, setEditChannel] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
 
-  
   function handleEditAction(e) {
     let id = e;
 
@@ -25,13 +25,18 @@ export const ChannelToLead = () => {
   }
   const action = {
     editLocal: editLocal,
-    setStatus:  setEditChannel,
-    dataEdit: editChannel   
- }
+    setStatus: setEditChannel,
+    dataEdit: editChannel,
+  };
+
+  function handleModalAdd() {
+    setModalAdd(!modalAdd);
+  }
+
   return (
     <div className="entry-chanel">
       <h2>Canal de Ingreso</h2>
-      <button>+</button>
+      <button onClick={handleModalAdd}>+</button>
 
       <table>
         <thead>
@@ -58,18 +63,20 @@ export const ChannelToLead = () => {
           ))}
         </tbody>
       </table>
-
-      <FormsConfig setLocal={setLocal} title={"Agregar Canal de Ingreso"} />
+      {modalAdd && (
+        <section className="modal-add">
+          <button onClick={handleModalAdd}>
+            x
+          </button>
+          <FormsConfig setLocal={setLocal} title={"Agregar Canal de Ingreso"} />
+        </section>
+      )}
 
       {editChannel && (
         <div className="modal-edit-action">
           <button onClick={() => setEditChannel()}>x</button>
 
-          <FormsEdit
-            action={action}
-          
-            title={"Editar canal a realizar"}
-          />
+          <FormsEdit action={action} title={"Editar canal a realizar"} />
         </div>
       )}
     </div>

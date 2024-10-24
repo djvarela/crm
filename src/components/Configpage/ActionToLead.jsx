@@ -7,6 +7,7 @@ export const ActionToLead = () => {
     useLocalStorage("optionAction");
 
   const [editAction, setEditAction] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
 
   const action = {
     editLocal: editLocal,
@@ -21,17 +22,19 @@ export const ActionToLead = () => {
 
     setEditAction(edit);
   }
-
   function handleDeleteAction(id) {
     if (window.confirm("¿Estás seguro de borrar esta opcion?")) {
       deleteValueLocal(id);
     }
   }
+  function handleModalAdd() {
+    setModalAdd(!modalAdd);
+  }
 
   return (
     <div className="lead-action">
       <h2>Acciones a realizar</h2>
-      <button>+</button>
+      <button onClick={handleModalAdd}>+</button>
       <table>
         <thead>
           <tr>
@@ -56,8 +59,12 @@ export const ActionToLead = () => {
           ))}
         </tbody>
       </table>
-
-      <FormsConfig setLocal={setLocal} title={"Agregar acción"} />
+      {modalAdd && (
+        <section className="modal-add">
+          <button onClick={handleModalAdd}>x</button>
+          <FormsConfig setLocal={setLocal} title={"Agregar acción"} />
+        </section>
+      )}
 
       {editAction && (
         <div className="modal-edit-action">

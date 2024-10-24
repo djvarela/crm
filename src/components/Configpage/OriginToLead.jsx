@@ -5,15 +5,15 @@ import { FormsConfig, FormsEdit } from "../Configpage";
 export const OriginToLead = () => {
   const { storeValue, setLocal, editLocal, deleteValueLocal } =
     useLocalStorage("originLead");
+  const [modalAdd, setModalAdd] = useState(false);
 
   const [orignEdit, setOriginEdit] = useState(false);
 
-
-const action = {
+  const action = {
     editLocal: editLocal,
-    setStatus:  setOriginEdit,
-    dataEdit: orignEdit   
- }
+    setStatus: setOriginEdit,
+    dataEdit: orignEdit,
+  };
 
   function handleEditAction(e) {
     let id = e;
@@ -29,11 +29,15 @@ const action = {
     }
   }
 
+  function handleModalAdd() {
+    setModalAdd(!modalAdd);
+  }
 
   return (
     <div className="lead-origin">
       <h2>Origenes de consulta</h2>
-      <button>+</button>
+      <button onClick={handleModalAdd}>+</button>
+
       <table>
         <thead>
           <tr>
@@ -51,24 +55,26 @@ const action = {
                 <button onClick={() => handleEditAction(origin.id)}>
                   Editar
                 </button>
-                <button
-                onClick={() => handleDeleteAction(origin.id )}
-                >eliminar</button>
+                <button onClick={() => handleDeleteAction(origin.id)}>
+                  eliminar
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <FormsConfig setLocal={ setLocal } title={"Agregar Origen"} />
+      {modalAdd && (
+        <section className="modal-add">
+          <button onClick={handleModalAdd}>x</button>
+          <FormsConfig setLocal={setLocal} title={"Agregar Origen"} />)
+        </section>
+      )}
 
       {orignEdit && (
         <div className="modal-edit-action">
-          <button 
-            onClick={()=> setOriginEdit()}
-          >x</button>
+          <button onClick={() => setOriginEdit()}>x</button>
 
-          <FormsEdit action={action}  title={"Editar Origen"} />
+          <FormsEdit action={action} title={"Editar Origen"} />
         </div>
       )}
     </div>

@@ -3,13 +3,17 @@
   gap: 1em;
   width: 100%;
   height: 100%;
+  align-items: flex-start;
+  justify-content: center;
   position: relative;
 }
 
 .config-page > div {
   border: 1px solid #202020;
   padding: 1em;
-
+  position: relative;
+  width: 100%;
+  height: 50%;
   & table {
     width: 100%;
   }
@@ -24,48 +28,61 @@
   }
 }
 
-.config-page {
-  .modal-add{
-    width: 100%;
+.modal-add {
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e0e0ebc;
+  
+  form {
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    width: 50%;
+    flex-direction: column;
+    background-color: #eee;
   }
-    & .modal-edit-action {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0;
-      background-color: #0e0e0ebc;
+}
+.modal-edit-action {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background-color: #0e0e0ebc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & form {
+    border-top: 2px solid var(--green);
+    width: 50%;
+    height: 50%;
+    background-color: #eee;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+
+    & span {
+      width: 50%;
+
+      padding: 1em;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      gap: 1em;
 
-      & form {
-        border-top: 2px solid var(--green);
-        width: 50%;
-        height: 50%;
-        background-color: #eee;
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        justify-content: flex-start;
-        
-
-        & span {
-          width: 50%;
-     
-          padding: 1em;
-          display: flex;
-          flex-direction: column;
-          gap: 1em;
-           
-        
-          & input{
-            padding: .7em;
-          }
-        }
+      & input {
+        padding: 0.7em;
       }
     }
   }
-
+}

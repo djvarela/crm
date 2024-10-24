@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const FormsConfig = ({ setLocal, title }) => {
   function onSubmit(e) {
     e.preventDefault();
@@ -23,14 +22,14 @@ export const FormsConfig = ({ setLocal, title }) => {
   }
 
   return (
-    <section className="modal-add">
-      <h2>{title}</h2>
-
+   
+    
       <form onSubmit={onSubmit} autoComplete="off">
+        <h2>{title}</h2>
         <label htmlFor="nombre">Nombre:</label>
         <input type="text" name="nombre" />
         <button>Agregar</button>
       </form>
-    </section>
+  
   );
 };

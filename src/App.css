@@ -24,6 +24,7 @@ body {
 }
 button {
   cursor: pointer;
+  transition: .20s all;
 }
 
 button.primary {
@@ -60,6 +61,18 @@ button.submit{
   font-weight: 400;
   text-align: center;
   margin: 1px 0;
+}
+
+button.primary:hover{
+  background-color: #038157;
+}
+
+button.secondary:hover{
+  background-color: #d9dada;
+}
+
+button.icon:hover{
+  background-color: #ececec;
 }
 
 

@@ -1,14 +1,17 @@
 export const Home = () => {
-  const totalLeads = JSON.parse(localStorage.getItem("leads")) || [];
   const totalClients = JSON.parse(localStorage.getItem("customers")) || [];
-  const nowLeads = totalLeads.map((lead) => {
-    let data = new Date(lead.date);
 
-    if (data.getDate() == new Date().getDate()) {
-      return lead;
-    }
+  const totalLeads = JSON.parse(localStorage.getItem("leads")) || [];
+  const now = `${new Date().getDate()}/${new Date().getMonth() + 1}`;
+  
+  const nowLeads = totalLeads.filter((lead) => {
+    const leadDate = new Date(lead.date);
+    const leadDayMonth = `${leadDate.getDate()}/${leadDate.getMonth() + 1}`;
+  
+    return leadDayMonth === now;
   });
 
+console.log(nowLeads);
   return (
     <section className="home">
       <div className="home-status">

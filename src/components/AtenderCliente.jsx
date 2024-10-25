@@ -1,65 +1,43 @@
-import {  useRef } from "react";
+import { useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-export const AtenderCliente = ({atender}) => {
+export const AtenderCliente = ({ atender }) => {
+  const canales = JSON.parse(localStorage.getItem("chanelAction")) || [];
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const localLeads = JSON.parse(localStorage.getItem("leads")) || [];
 
   const navigation = useNavigate();
-  const mensajeRef = useRef();
-  const emailRef = useRef();
-  const wpRef = useRef();
-  const rrssRef = useRef();
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const mensajeRef = useRef();
+
   const newLeadSubmit = (e) => {
     e.preventDefault();
+    const inputs = Array.from(e.target.elements.canal);
 
-    const localLeads = JSON.parse(localStorage.getItem("leads")) || [];
-   
-    const canales = [
-      {
-        email: emailRef.current.checked,
-        whatsApp: wpRef.current.checked,
-        rrss: rrssRef.current.checked,
-      },
-    ];
-
-    const canal = canales.map((item) => {
-      if (item.email) {
-        return "email";
-      } else if (item.whatsApp) {
-        return "whatsApp";
-      } else {
-        return "rrss";
-      }
-    });
+    const canal = inputs.filter((input) => input.checked).at();
 
     const lead = {
       id: crypto.randomUUID(),
       id_customer: atender[0].id,
-      canal: canal[0],
+      canal: canal.value,
       mensaje: mensajeRef.current.value,
       date: new Date(),
       assigned_user: e.target.usuario.value,
       status: false,
       status_info: [],
-
     };
 
     localLeads.push(lead);
 
-
-    console.log({lead})
-
     localStorage.setItem("leads", JSON.stringify(localLeads));
 
-    navigation('/home');
-
+    navigation("/home");
   };
 
   return (
     <div className="atenderUser">
-      <h2>Atender user</h2>
+      <h2>Atender</h2>
 
       <form onSubmit={newLeadSubmit}>
         <span>
@@ -67,7 +45,18 @@ export const AtenderCliente = ({atender}) => {
         </span>
 
         <div className="canal-recibo">
-          <span>
+          {canales.map((canal) => (
+            <span key={canal.id}>
+              <input
+                type="radio"
+                name="canal"
+                value={canal.name}
+                id={canal.name.toLowerCase()}
+              />
+              <label htmlFor={canal.name.toLowerCase()}>{canal.name}</label>
+            </span>
+          ))}
+          {/* <span>
             <label htmlFor="email">Email</label>
             <input type="radio" name="canal" ref={emailRef} id="email" />
           </span>
@@ -79,16 +68,16 @@ export const AtenderCliente = ({atender}) => {
           <span>
             <label htmlFor="wp">WhatsApp</label>
             <input type="radio" id="wp" ref={wpRef} name="canal" />
-          </span>
+          </span> */}
         </div>
         <span>
           <label htmlFor="">Asignar usuario:</label>
           <select name="usuario" id="">
-                  {
-                    users.map(user =>(
-                      <option key={user.id} value={user.id}>{user.nombre} {user.apellido}</option>
-                    ))
-                  }
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.nombre} {user.apellido}
+              </option>
+            ))}
           </select>
         </span>
         <span>

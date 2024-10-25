@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocalStorage } from "../../hooks";
 import { FormsConfig, FormsEdit } from "../Configpage";
+import { Button } from "../../components";
 
 export const ActionToLead = () => {
   const { setLocal, editLocal, storeValue, deleteValueLocal } =
@@ -34,7 +35,9 @@ export const ActionToLead = () => {
   return (
     <div className="lead-action">
       <h2>Acciones a realizar</h2>
-      <button onClick={handleModalAdd}>+</button>
+
+      <Button onClick={handleModalAdd} label={"x"} />
+
       <table>
         <thead>
           <tr>
@@ -48,12 +51,19 @@ export const ActionToLead = () => {
             <tr key={action.id}>
               <td>{action.name}</td>
               <td>
-                <button onClick={() => handleEditAction(action.id)}>
-                  Editar
-                </button>
-                <button onClick={() => handleDeleteAction(action.id)}>
-                  Delete
-                </button>
+                <Button
+                  type={"icon"}
+                  onClick={() => handleEditAction(action.id)}
+                >
+                  <img src="/icons/edit.svg" width={20} alt="" />
+                </Button>
+
+                <Button
+                  type={"icon"}
+                  onClick={() => handleDeleteAction(action.id)}
+                >
+                  <img src="/icons/trash.svg" width={20} alt="" />
+                </Button>
               </td>
             </tr>
           ))}
@@ -61,14 +71,15 @@ export const ActionToLead = () => {
       </table>
       {modalAdd && (
         <section className="modal-add">
-          <button onClick={handleModalAdd}>x</button>
+          <Button onClick={handleModalAdd} type={"secondary"} label={"x"} />
+
           <FormsConfig setLocal={setLocal} title={"Agregar acción"} />
         </section>
       )}
 
       {editAction && (
         <div className="modal-edit-action">
-          <button onClick={() => setEditAction()}>x</button>
+          <Button onClick={() => setEditAction()} type={"secondary"} label={"x"} />
 
           <FormsEdit action={action} title={"Editar accion a realizar"} />
         </div>

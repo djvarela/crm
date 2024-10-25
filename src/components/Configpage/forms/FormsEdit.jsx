@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../../../components";
 
 export const FormsEdit = ({ action, title }) => {
   const { editLocal, setStatus, dataEdit } = action;
@@ -19,7 +20,7 @@ export const FormsEdit = ({ action, title }) => {
   }
 
   return (
-    <form onSubmit={onSubmitEditOrigin} autoComplete="off">
+    <form className="forms" onSubmit={onSubmitEditOrigin} autoComplete="off">
       <h2>{title}</h2>
       <span>
         <label htmlFor="nombre">Nombre: </label>
@@ -30,7 +31,8 @@ export const FormsEdit = ({ action, title }) => {
           data-id={dataEdit?.id}
           defaultValue={dataEdit?.name}
         />
-        <button type="submit">Guardar</button>
+     
+        <Button type={'submit'} label={'Guardar'}  />
       </span>
     </form>
   );

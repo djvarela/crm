@@ -4,5 +4,5 @@ export * from './AtenderCliente.jsx'
 export * from '../pages/SearchCliente.jsx'
 export * from '../pages/Home.jsx'
 export * from './User.jsx'
-export * from  './Aside.jsx'
-
+export * from  './Aside.jsx';
+export * from './Button.jsx';

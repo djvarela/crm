@@ -21,11 +21,6 @@
   td {
     border: 1px solid #222;
   }
-
-  & form {
-    padding: 1em;
-    border: 1px solid #202020;
-  }
 }
 
 .modal-add {
@@ -39,7 +34,7 @@
   align-items: center;
   justify-content: center;
   background-color: #0e0e0ebc;
-  
+
   form {
     padding: 1em;
     display: flex;
@@ -63,7 +58,6 @@
   & form {
     border-top: 2px solid var(--green);
     width: 50%;
-    height: 50%;
     background-color: #eee;
     padding: 1em;
     display: flex;
@@ -73,16 +67,12 @@
     justify-content: flex-start;
 
     & span {
-      width: 50%;
-
-      padding: 1em;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 1em;
 
-      & input {
-        padding: 0.7em;
-      }
+      
     }
   }
 }

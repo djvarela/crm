@@ -9,7 +9,8 @@
   font-family: Dosis;
   --green: #49bc59;
   --blue: #0090e5;
-  --bg: #F5F7FE
+  --bg: #f5f7fe;
+  --secondary: #ffffff;
 }
 html,
 body {
@@ -21,8 +22,76 @@ body {
   display: flex;
   min-height: 100vh;
 }
-button{
+button {
   cursor: pointer;
+}
+
+button.primary {
+  padding: 0.2rem 1rem;
+  background-color: var(--green);
+  border: 1px solid transparent;
+  color: #eee;
+  width: min-content;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  margin: 1px 0;
+}
+button.secondary {
+  padding: 0.2rem 1rem;
+  background-color: var(--secondary);
+  border: 1px solid #202020db;
+  color: #1e1e1e;
+  width: min-content;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  margin: 1px 0;
+}
+button.submit{
+
+  padding: 0.4rem 1.5rem;
+  background-color: var(--blue);
+  border: 1px solid transparent;
+  color: #ffffff;
+  letter-spacing: .9px;
+  width: min-content;
+  border-radius: 5px;
+  font-weight: 400;
+  text-align: center;
+  margin: 1px 0;
+}
+
+
+button.primary:active,
+.icon:active,
+.secondary:active {
+  border: 1px solid #202200;
+  transform: scale(0.9);
+}
+
+button.icon {
+  background-color: #ebf9e8a1;
+  padding: 1px 4px;
+  margin: 1px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  img {
+    object-fit: scale-down;
+
+  }
+}
+form.forms{
+  border: 1px solid #6d6c6cbc;
+  border-top: 2.5px solid var(--green);
+  box-shadow: 1px 1px .5rem #eaf8ee;
+  border-radius: 5px;
+
+  input {
+    border: none;
+    background-color: rgba(146, 176, 147, 0.246);
+    padding: 0.5em;
+  }
 }
 
 body {
@@ -229,7 +298,7 @@ td {
 }
 
 .form-add-user {
-  border-top:5px solid #17a072 ;
+  border-top: 5px solid #17a072;
   padding: 1em;
   width: 50%;
   background-color: #eee;
@@ -250,7 +319,7 @@ td {
   position: relative;
 }
 
-.avatar-add-container img{
+.avatar-add-container img {
   width: 140px;
   height: 140px;
   object-fit: cover;
@@ -280,67 +349,58 @@ td {
   display: flex;
   flex-direction: column;
   gap: 1rem;
- 
 }
-.form-add-user span{
+.form-add-user span {
   padding: 0 1rem;
 }
 
-.info-add-container span label{
+.info-add-container span label {
   font-weight: bold;
   color: #747474ea;
-
 }
-.info-add-container input{
-  margin-top: .3em;
-  border:none;
-  padding: .3rem;
+.info-add-container input {
+  margin-top: 0.3em;
+  border: none;
+  padding: 0.3rem;
   background-color: #eee;
 }
 
-
-
-.avatar-add-container ,.info-add-container{
+.avatar-add-container,
+.info-add-container {
   border-radius: 1.1em;
   padding: 1em;
   border: 1px solid #dfdada;
-   background-color: #f5f7f9;
-
+  background-color: #f5f7f9;
 }
 
-
-.info-add-container button{
- width: 150px;
- margin-top: 1em;
- background-color: var(--blue);
- padding: .4rem;
- color: #eee;
- border: none;
- font-weight: 450;
- border-radius: 5px;
- 
+.info-add-container button {
+  width: 150px;
+  margin-top: 1em;
+  background-color: var(--blue);
+  padding: 0.4rem;
+  color: #eee;
+  border: none;
+  font-weight: 450;
+  border-radius: 5px;
 }
-.info-add-container button:hover{
+.info-add-container button:hover {
   filter: grayscale(30%);
   box-shadow: 1px 1px 1em #d6d0d0;
 }
 
-.info-add-container .buttons-add-user{
+.info-add-container .buttons-add-user {
   display: flex;
   gap: 1em;
   width: 100%;
   align-items: center;
   justify-content: center;
- 
 }
-.add-user .info-add-container  button{
-
-display: inline;
-text-align: center;
+.add-user .info-add-container button {
+  display: inline;
+  text-align: center;
 }
 
-.info-add-container
-.cancel-add-user{
+.info-add-container .cancel-add-user {
   color: #f97378;
   border: 1px solid #f97378;
   background-color: #fff2f3;
@@ -369,7 +429,6 @@ text-align: center;
   background-color: #1a1a11;
   height: 100%;
   background-color: #f0f0f0;
-
 }
 
 .userContent ul {
@@ -395,7 +454,6 @@ text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
- 
 }
 .userContent .userDates {
   display: flex;
@@ -507,26 +565,25 @@ text-align: center;
 
 .user-page {
   width: 100%;
-  
 }
-.user-page  span {
+.user-page span {
   display: flex;
   justify-content: flex-end;
 }
 
-.user-page  span > button{
-  padding: .4em 1em;
+.user-page span > button {
+  padding: 0.4em 1em;
   border: none;
   color: #fff;
   font-weight: 450;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   background-color: var(--green);
-  margin: 1em
+  margin: 1em;
 }
 
-.user-page > button img{
+.user-page > button img {
   width: 20px;
   color: #eee;
 }
@@ -569,7 +626,6 @@ td {
 
 .user-page .table-users table button {
   position: relative;
-
 }
 
 .table-users table .estado-user {
@@ -590,10 +646,9 @@ td {
 
 .table-users .users-menu {
   position: relative;
-
 }
 
-.table-users .users-menu button{
+.table-users .users-menu button {
   background-color: transparent;
   color: #5c94ff;
   border: none;
@@ -704,7 +759,6 @@ td {
   padding: 0.4rem;
 }
 
-
 /* Customer */
 
 .customer-page {
@@ -712,38 +766,37 @@ td {
   padding: 1em;
 }
 
-.add-customer{
+.add-customer {
   background-color: #eee;
   padding: 1em;
 }
 
-.add-customer form{
+.add-customer form {
   display: flex;
   flex-direction: column;
   padding: 1em;
-  gap: .5em;
+  gap: 0.5em;
 }
 
-.customer-table{
+.customer-table {
   width: 100%;
 }
 
-.customer-table table{
+.customer-table table {
   width: 100%;
 }
 
 .customer-table table thead tr {
-background-color: #5c94ff;
-color: #eee;
-font-weight: bold;
+  background-color: #5c94ff;
+  color: #eee;
+  font-weight: bold;
 }
 .customer-table table tbody tr td {
   border-bottom: 1px solid #b1b1b37a;
-  padding: .7rem;
+  padding: 0.7rem;
 }
 
-
-.viewProfile{
+.viewProfile {
   width: 100%;
   position: absolute;
   z-index: 1;
@@ -752,23 +805,21 @@ font-weight: bold;
   display: flex;
   flex-direction: column;
   gap: 1em;
-  & h2{
+  & h2 {
     color: #404fda;
-    
   }
-  & .date-profiles{
+  & .date-profiles {
     display: flex;
     flex-direction: column;
   }
-  
-  & .info-profile{
+
+  & .info-profile {
     background-color: #fff;
     width: 100%;
     padding: 1em;
-   
   }
 
-  & .info{
+  & .info {
     border-top: 1px solid rgb(199, 199, 199);
     padding: 1em;
     width: 100%;
@@ -776,122 +827,110 @@ font-weight: bold;
     justify-content: space-between;
     gap: 1em;
     background-color: #fff;
-   
-    }
-  & .date-profiles ul{
+  }
+  & .date-profiles ul {
     padding: 1em;
     width: 50%;
     background-color: #fff;
     list-style: none;
-    }
-  & .op-seguimiento{
+  }
+  & .op-seguimiento {
     background-color: #fff;
     padding: 1em;
     display: flex;
     flex-direction: column;
   }
-  & .op-seguimiento ul{
-    display:flex;
+  & .op-seguimiento ul {
+    display: flex;
     flex-direction: column;
     gap: 1em;
     width: 100%;
     list-style: none;
     padding: 0;
   }
-  & .op-seguimiento ul li{
-   border: 1px solid #eee; 
-   padding: 1em;
-    
+  & .op-seguimiento ul li {
+    border: 1px solid #eee;
+    padding: 1em;
   }
-  & .op-seguimiento ul li .row{
+  & .op-seguimiento ul li .row {
     display: flex;
     justify-content: space-between;
     border: 1px solid #eee;
-   padding: 1em;
-   width: 100%;
-
-
+    padding: 1em;
+    width: 100%;
   }
-  & .row h2{
+  & .row h2 {
     font-size: 1rem;
     color: #17a072;
   }
-  & .row-info{
+  & .row-info {
     border-top: 1px solid transparent;
     background-color: var(--bg);
     padding: 1em;
     width: 100%;
     display: block;
-   
   }
-  
-    
 }
-
 
 /* Opportunities Page */
 
-.opportunities-page{
+.opportunities-page {
   width: 100%;
 }
 .opportunities-page .opportunities-table {
   width: 100%;
 }
-.opportunities-page .opportunities-table table{
+.opportunities-page .opportunities-table table {
   width: 100%;
 }
-.opportunities-page .opportunities-table table th{
+.opportunities-page .opportunities-table table th {
   border: none;
   text-align: start;
 }
-.opportunities-page .opportunities-table table thead{
+.opportunities-page .opportunities-table table thead {
   background-color: var(--green);
   color: #eee;
 }
 
-.opportunities-page .opportunities-table table tbody td{
+.opportunities-page .opportunities-table table tbody td {
   border-bottom: 1px solid #17a072;
   text-transform: none;
 }
 
-
-.op-info{
+.op-info {
   border: 1px solid red;
   width: 100%;
   padding: 1em;
-
 }
-.customer-info{
-
-  & h2{
+.customer-info {
+  & h2 {
     color: rgb(80, 119, 228);
   }
-
 }
-.atenderOportunidad form{
+.atenderOportunidad form {
   display: flex;
   width: 50%;
   flex-direction: column;
   width: 100%;
 }
-.action-info{
+.action-info {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  order:1px solid #222;
+  order: 1px solid #222;
   overflow: hidden;
   padding: 1em;
 }
-.action-info span{
+.action-info span {
   display: flex;
   width: 95%;
   flex-direction: column;
- 
+
   position: relative;
 }
 
-.action-info span::before{
-  content: '';
+.action-info span::before {
+  content: "";
   background-color: #0090e5;
   width: 10px;
   height: 200px;
@@ -900,9 +939,9 @@ font-weight: bold;
   position: absolute;
 }
 
-.action-info .action-info-message{
-display: flex;
-gap:1em;
-justify-content: space-evenly;
+.action-info .action-info-message {
+  display: flex;
+  gap: 1em;
+  justify-content: space-evenly;
 }
 /* -------------------- */

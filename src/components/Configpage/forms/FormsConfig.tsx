@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "../../../components";
 export const FormsConfig = ({ setLocal, title }) => {
   function onSubmit(e) {
     e.preventDefault();
@@ -24,11 +24,13 @@ export const FormsConfig = ({ setLocal, title }) => {
   return (
    
     
-      <form onSubmit={onSubmit} autoComplete="off">
+      <form onSubmit={onSubmit} className="forms" autoComplete="off">
         <h2>{title}</h2>
         <label htmlFor="nombre">Nombre:</label>
         <input type="text" name="nombre" />
-        <button>Agregar</button>
+   
+        <Button type={'submit'} label={'Agregar'}  />
+
       </form>
   
   );

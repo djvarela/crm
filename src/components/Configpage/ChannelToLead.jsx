@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormsConfig } from "./forms/FormsConfig";
 import { useLocalStorage } from "../../hooks";
 import { FormsEdit } from "./forms/FormsEdit";
+import { Button } from "../../components";
 
 export const ChannelToLead = () => {
   const { setLocal, editLocal, storeValue, deleteValueLocal } =
@@ -36,7 +37,8 @@ export const ChannelToLead = () => {
   return (
     <div className="entry-chanel">
       <h2>Canal de Ingreso</h2>
-      <button onClick={handleModalAdd}>+</button>
+
+      <Button onClick={handleModalAdd} label={"+"} />
 
       <table>
         <thead>
@@ -51,13 +53,19 @@ export const ChannelToLead = () => {
               <td>{channel.name}</td>
 
               <td>
-                <button onClick={() => handleEditAction(channel.id)}>
-                  Editar
-                </button>
+                <Button
+                  type={"icon"}
+                  onClick={() => handleEditAction(channel.id)}
+                >
+                  <img src="/icons/edit.svg" width={20} alt="" />
+                </Button>
 
-                <button onClick={() => handleDeleteAction(channel.id)}>
-                  Eliminar
-                </button>
+                <Button
+                  type={"icon"}
+                  onClick={() => handleDeleteAction(channel.id)}
+                >
+                  <img src="/icons/trash.svg" width={20} alt="" />
+                </Button>
               </td>
             </tr>
           ))}
@@ -65,17 +73,17 @@ export const ChannelToLead = () => {
       </table>
       {modalAdd && (
         <section className="modal-add">
-          <button onClick={handleModalAdd}>
-            x
-          </button>
+      
+          <Button onClick={handleModalAdd} type={'secondary'} label={'x'}  />
           <FormsConfig setLocal={setLocal} title={"Agregar Canal de Ingreso"} />
         </section>
       )}
 
       {editChannel && (
         <div className="modal-edit-action">
-          <button onClick={() => setEditChannel()}>x</button>
-
+       
+          <Button onClick={() => setEditChannel()} type={"secondary"} label={"x"} />
+    
           <FormsEdit action={action} title={"Editar canal a realizar"} />
         </div>
       )}

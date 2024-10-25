@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocalStorage } from "../../hooks";
 import { FormsConfig, FormsEdit } from "../Configpage";
+import { Button } from "../../components";
 
 export const OriginToLead = () => {
   const { storeValue, setLocal, editLocal, deleteValueLocal } =
@@ -36,7 +37,8 @@ export const OriginToLead = () => {
   return (
     <div className="lead-origin">
       <h2>Origenes de consulta</h2>
-      <button onClick={handleModalAdd}>+</button>
+ 
+      <Button onClick={handleModalAdd} label={'+'}/>
 
       <table>
         <thead>
@@ -52,12 +54,19 @@ export const OriginToLead = () => {
               <td>{origin.name}</td>
               <td>{origin.status}</td>
               <td>
-                <button onClick={() => handleEditAction(origin.id)}>
-                  Editar
-                </button>
-                <button onClick={() => handleDeleteAction(origin.id)}>
-                  eliminar
-                </button>
+              <Button
+                  type={"icon"}
+                  onClick={() => handleEditAction(origin.id)}
+                >
+                  <img src="/icons/edit.svg" width={20} alt="" />
+                </Button>
+
+                <Button
+                  type={"icon"}
+                  onClick={() => handleDeleteAction(origin.id)}
+                >
+                  <img src="/icons/trash.svg" width={20} alt="" />
+                </Button>
               </td>
             </tr>
           ))}
@@ -65,14 +74,15 @@ export const OriginToLead = () => {
       </table>
       {modalAdd && (
         <section className="modal-add">
-          <button onClick={handleModalAdd}>x</button>
+          <Button onClick={handleModalAdd} type={'secondary'} label={'x'}  />
           <FormsConfig setLocal={setLocal} title={"Agregar Origen"} />)
         </section>
       )}
 
       {orignEdit && (
         <div className="modal-edit-action">
-          <button onClick={() => setOriginEdit()}>x</button>
+   
+          <Button onClick={() => setOriginEdit()} type={'secondary'} label={'x'}  />
 
           <FormsEdit action={action} title={"Editar Origen"} />
         </div>

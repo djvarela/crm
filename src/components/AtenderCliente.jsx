@@ -15,7 +15,10 @@ export const AtenderCliente = ({ atender }) => {
     e.preventDefault();
     const inputs = Array.from(e.target.elements.canal);
 
-    const canal = inputs.filter((input) => input.checked).at();
+    const canal = inputs.filter( (input) => input.checked.at());
+
+
+
 
     const lead = {
       id: crypto.randomUUID(),
@@ -56,19 +59,7 @@ export const AtenderCliente = ({ atender }) => {
               <label htmlFor={canal.name.toLowerCase()}>{canal.name}</label>
             </span>
           ))}
-          {/* <span>
-            <label htmlFor="email">Email</label>
-            <input type="radio" name="canal" ref={emailRef} id="email" />
-          </span>
-          <span>
-            <label htmlFor="rrss">RRSS</label>
-            <input type="radio" id="rrss" ref={rrssRef} name="canal" />
-          </span>
-
-          <span>
-            <label htmlFor="wp">WhatsApp</label>
-            <input type="radio" id="wp" ref={wpRef} name="canal" />
-          </span> */}
+     
         </div>
         <span>
           <label htmlFor="">Asignar usuario:</label>
@@ -82,7 +73,7 @@ export const AtenderCliente = ({ atender }) => {
         </span>
         <span>
           <label htmlFor="mensaje">Mensaje:</label>
-          <textarea id="mensaje" ref={mensajeRef}></textarea>
+          <textarea id="mensaje" ref={mensajeRef} required></textarea>
         </span>
         <button>Guardar</button>
       </form>

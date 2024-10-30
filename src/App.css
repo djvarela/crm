@@ -225,6 +225,8 @@ aside li a:hover aside li a img {
 }
 
 main {
+  overflow: hidden;
+  overflow-y: scroll;
   position: relative;
   width: 97%;
   margin-top: 1em;

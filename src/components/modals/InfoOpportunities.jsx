@@ -1,6 +1,8 @@
 import { useState } from "react";
+import {Button} from '../../components'
 
-const InfoOpportunities = ({ data }) => {
+
+const InfoOpportunities = ({ data,modal }) => {
   const leads = JSON.parse(localStorage.getItem("leads")) || [];
   const lead = leads.filter((lead) => lead.id === data[0].id_lead);
   const [status, setStatus] = useState(lead);
@@ -37,10 +39,18 @@ const InfoOpportunities = ({ data }) => {
 
     localStorage.setItem("leads", JSON.stringify(updatedLeads));
     e.target.reset();
+
+    modal(false)
   }
 
   return (
     <section className="op-info">
+
+      <Button type="secondary" label={'X'}  onClick={()=>modal(false) }/>
+
+      <div className="container-info">
+
+     
       <h2>Descripcion de la oportunidad</h2>
 
       <section className="customer-info">
@@ -65,8 +75,11 @@ const InfoOpportunities = ({ data }) => {
 
           <label htmlFor="">Comentario:</label>
           <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
-          <button type="submit">Enviar</button>
+          
+          <Button type="secondary" label={'Enviar'}  />
+
         </form>
+      </div> 
       </div>
     </section>
   );

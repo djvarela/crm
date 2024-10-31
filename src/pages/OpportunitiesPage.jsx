@@ -41,6 +41,7 @@ const OpportunitiesPage = () => {
 
   const handleViewLead = (id) => {
     setViewOp(!viewOp);
+    
     const info = data.filter((data) => data.id_lead === id);
     setOpportunities(info);
   };
@@ -80,7 +81,7 @@ const OpportunitiesPage = () => {
           </tbody>
         </table>
       </div>
-      {viewOp && <InfoOpportunities data={opportunitiesState} />}
+      {viewOp && <InfoOpportunities data={opportunitiesState}  modal={setViewOp} />}
     </section>
   );
 };

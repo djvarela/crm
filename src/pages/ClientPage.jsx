@@ -1,41 +1,123 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import { Button } from "../components";
 
 export const ClientPage = () => {
 
-  const LocalCustomer = JSON.parse(localStorage.getItem('customers')) || [];
-  const [customerState, setCustomerState] = useState(LocalCustomer);
-//TAREA: corregir, xq estos state se utilizan tmb FormsNuevoCliente
+  const { storeValue, editLocal, deleteValueLocal } = useLocalStorage('customers')
+  const [customer, setCustomer] = useState()
 
-return (
+  //
+  const onSubmitEdit = (e) => {
+    e.preventDefault();
 
-<section className="customer-page">
-  
-<h2>Clientes</h2>
-  
+    const updatedValues = {
+      name: e.target.nombre.value,
+      tel: e.target.tel.value,
+      email: e.target.email.value,
+    };
+
+    editLocal(customer.id, updatedValues);
+    setCustomer(null);
+  };
 
 
-  <div className="customer-table">
+  //
+  const handleEditCustomer = (id) => {
 
-      <table>
+
+    const customer = storeValue.filter((data) => data.id === id).at()
+    setCustomer(customer)
+  }
+
+  //
+  const handleDelete = (id) => {
+
+
+    deleteValueLocal(id)
+
+  }
+
+
+
+
+  return (
+
+    <section className="customer-page">
+
+      <h2>Clientes</h2>
+
+      <div className="customer-table">
+
+        <table>
           <thead>
-              <tr>
-                  <td>NOMBRE</td>
-                  <td>EMAIL</td>
-                  <td>TELEFONO</td>
-              </tr>
+            <tr>
+              <th>NOMBRE</th>
+              <th>EMAIL</th>
+              <th>TELEFONO</th>
+              <th>-</th>
+            </tr>
           </thead>
           <tbody>
-        {customerState.map(customer =>(
-          <tr key={customer.id} >
-            <td>{customer.name}</td>
-            <td>{customer.email}</td>
-            <td>{customer.tel}</td>
-          </tr>
-        ))}
+            {storeValue.map(customer => (
+              <tr key={customer.id} >
+                <td>{customer.name}</td>
+                <td>{customer.email}</td>
+                <td>{customer.tel}</td>
+                <td>
+                  <Button
+                    type={'icon'}
+                    onClick={() => handleEditCustomer(customer.id)}
+                  ><img src="/icons/edit.svg" alt="button edit" width={20} />
+                  </Button>
+                  <Button
+                    type={'icon'}
+                    onClick={() => handleDelete(customer.id)}
+                  ><img src="/icons/trash.svg" alt="button delete" width={20} />
+                  </Button>
+                </td>
+              </tr>
+            ))}
 
           </tbody>
-      </table>
-  </div>
+        </table>
+      </div>
+
+      {/* moda edit */}
+
+
+      {customer && (
+
+
+        <div className="modal-edit">
+
+          <Button label={'X'} type="secondary" onClick={() => setCustomer(null)} />
+          <form onSubmit={onSubmitEdit} autoComplete="off">
+
+            <span>
+              <label htmlFor="">Nombre: </label>
+              <input type="text" name="nombre" defaultValue={customer.name} />
+            </span>
+
+            <span>
+              <label htmlFor="">Tel: </label>
+              <input type="text" name="tel" defaultValue={customer.tel} />
+            </span>
+            <span>
+              <label htmlFor="">Email: </label>
+              <input type="text" name='email' defaultValue={customer.email} />
+            </span>
+
+
+            <Button label={'Guardar'} type="primary" />
+
+          </form>
+
+        </div>
+      )}
+
+
+
     </section>
   )
 }

@@ -11,18 +11,20 @@ export const useLocalStorage = (key) => {
     localStorage.setItem(key, JSON.stringify(updatedValue));
   }
 
-  function editLocal(id, value) {
+
+  //
+  function editLocal(id, values) {
     const updatedValue = storeValue.map((action) => {
       if (action.id === id) {
         return {
           ...action,
-          name: value,
+          ...values, 
         };
       } else {
         return action;
       }
     });
-
+  
     setStoreValue(updatedValue);
     localStorage.setItem(key, JSON.stringify(updatedValue));
   }

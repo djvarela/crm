@@ -13,8 +13,8 @@ export const ChannelToLead = () => {
 
   function handleEditAction(e) {
     let id = e;
-
     const edit = storeValue.filter((option) => option.id == id).at();
+    console.log(edit)
 
     setEditChannel(edit);
   }

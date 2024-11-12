@@ -1,6 +1,7 @@
 import "../assets/css/config.css";
 
-import { ActionToLead, OriginToLead , ChannelToLead} from "../components/Configpage";
+import { ActionToLead, OriginToLead , ChannelToLead, TagCustomers} from "../components/Configpage";
+
 
 
 export const ConfigPage = () => {
@@ -13,6 +14,7 @@ export const ConfigPage = () => {
         <ChannelToLead />
         <OriginToLead />
         <ActionToLead />
+        <TagCustomers />
 
     </section>
   );

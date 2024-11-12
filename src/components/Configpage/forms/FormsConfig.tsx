@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../../components";
+
 export const FormsConfig = ({ setLocal, title }) => {
   function onSubmit(e) {
     e.preventDefault();

@@ -11,7 +11,6 @@ const Record = ({ result, setViewProfile }) => {
         (data) => data.id_customer === result[0].id
       );
 
-      console.log({ leadUser });
       const newDate = leadUser.map((data) => {
         let fecha = new Date(data.date);
         const usuario =
@@ -78,18 +77,18 @@ const Record = ({ result, setViewProfile }) => {
               </span>
 
               {date.info.map((info) => (
-                
+
                 <div className="action-info" key={info.id}>
                   <span>
                     <p><strong>Accion realizada:</strong> {info.proximaAccion}</p>
-                      
+
                     <div className="action-info-message">
 
                       <p><em>{info.mensaje}</em></p>
                       <p>{(info.date)}</p>
 
                     </div>
-                  
+
                   </span>
                 </div>
               ))}

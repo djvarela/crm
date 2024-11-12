@@ -15,6 +15,7 @@ export const ClientPage = () => {
       name: e.target.nombre.value,
       tel: e.target.tel.value,
       email: e.target.email.value,
+      empresa: e.target.empresa.value
     };
 
     editLocal(customer.id, updatedValues);
@@ -97,6 +98,10 @@ export const ClientPage = () => {
             <span>
               <label htmlFor="">Nombre: </label>
               <input type="text" name="nombre" defaultValue={customer.name} />
+            </span>
+            <span>
+              <label htmlFor="empresa">Razon social:</label>
+              <input type="text" name='empresa' defaultValue={ customer.empresa }/>
             </span>
 
             <span>

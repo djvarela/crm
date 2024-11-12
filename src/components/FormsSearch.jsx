@@ -5,25 +5,23 @@ import { useContext } from "react";
 
 
 const FormsSearch = () => {
-  const {setSearchState} = useContext(AuthContext)
+  const { setSearchState } = useContext(AuthContext)
   const navigation = useNavigate();
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
 
     const search = e.target.search.value;
-    console.log(search)
-
     setSearchState(search)
-   navigation(`./search?q=${search}`)
+    navigation(`./search?q=${search}`)
   };
-  
+
   return (
     <>
-     <form onSubmit={onSearchSubmit}>
-            <input type="text" name="search" />
-            <button>🔍</button>
-          </form>
+      <form onSubmit={onSearchSubmit}>
+        <input type="text" name="search" />
+        <button>🔍</button>
+      </form>
     </>
   )
 }

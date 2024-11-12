@@ -13,6 +13,7 @@ export const FormsNuevoCliente = () => {
     const addCustomer = {
       id: crypto.randomUUID(),
       name: e.target.nombre.value,
+      empresa: e.target.empresa.value,
       email: e.target.email.value,
       tel: e.target.tel.value,
       registered: new Date(),
@@ -30,6 +31,10 @@ export const FormsNuevoCliente = () => {
     <section className="add-customer">
       <h2>Agregar cliente</h2>
       <form onSubmit={handleSubmit} autoComplete="off">
+
+        <label htmlFor="razon-social">Empresa:</label>
+        <input type="text"  name="empresa"/>
+
         <label htmlFor="">Nombre:</label>
         <input type="text" name="nombre" />
 

@@ -27,8 +27,6 @@ const EditUserModal = ({
   function handleEditSubit(e) {
 
     e.preventDefault();
-    console.log(e.target.estado.value)
-
     const estado = e.target.estado.value == 'Activo' ? true : false;
 
     const avatar = document.getElementById("avatarEdit");
